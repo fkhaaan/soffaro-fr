@@ -20,7 +20,7 @@ const light = {
 		},
 		secondary: {
 			contrastText: '#343434',
-			main: '#d7b586',
+			main: 'rgb(212, 175, 55)',
 		},
 		text: {
 			primary: '#343434',

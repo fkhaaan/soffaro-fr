@@ -1,7 +1,6 @@
 
 import { Box, Button, Stack, Container } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
-import  MonetizationOnIcon  from "@mui/icons-material/MonetizationOn";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import Badge from "@mui/material/Badge";
 import Pagination from "@mui/material/Pagination";
@@ -11,14 +10,15 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import "../../css/products.css";
 
 const products = [
-    {productName: "Cutlet", imagePath: "/img/cutlet.webp"},
-    {productName: "Kebab", imagePath: "/img/kebab-fresh.webp"},
-    {productName: "Kebab", imagePath: "/img/kebab.webp"},
-    {productName: "Lavash", imagePath: "/img/lavash.webp"},
-    {productName: "Lavash", imagePath: "/img/lavash.webp"},
-    {productName: "Cutlet", imagePath: "/img/cutlet.webp"},
-    {productName: "Kebab", imagePath: "/img/kebab-fresh.webp"},
-    {productName: "Kebab", imagePath: "/img/kebab.webp"},
+    {productName: "SuperSofa", imagePath: "/img/longblack.png"},
+     {productName: "Future", imagePath: "/img/soffa.png"},
+    {productName: "Future", imagePath: "/img/soffa.png"},
+    {productName: "Green", imagePath: "/img/threegreen.png"},
+    {productName: "Leos", imagePath: "/img/single-sofa.png"},
+    {productName: "Cuppe", imagePath: "/img/twopurple.png"},
+    {productName: "Lava", imagePath: "/img/single-sofa.png"},
+    {productName: "C2oo", imagePath: "/img/twopurple.png"},
+   
 ];
 
 
@@ -28,68 +28,57 @@ export default function Products() {
             <Container>
                 <Stack flexDirection={"column"} alignItems={"center"}>
                     <Stack className="avatar-big-box">
-                        <div className="top-text">
-                            <p>Bumarak Restaurant</p>
-                        </div>
                         <div className="single-search-big-box">
+                              <SearchIcon className="search-icon"/>
                             <input type="search" 
                             className="single-search-input"
                             name="singleResearch"
-                            placeholder="Type here"
+                            placeholder="Search sofas..."
                             />
-                            <Button className="single-button-search" variant="contained" color="primary">
-                                Search
-                                <SearchIcon/>
-                            </Button>
                         </div>
-                    </Stack>
-
-                    <Stack className="dishes-filter-section">
-                        <Stack className="dishes-filter-box">
-                            <Button
-                            variant="contained"
-                            color="primary"
-                            className="order"
-                            >
-                             New
-                            </Button>
-                              <Button
-                            variant="contained"
-                            color="secondary"
-                            className="order"
-                            >
-                             Price
-                            </Button>
-                              <Button
-                            variant="contained"
-                            color="secondary"
-                            className="order"
-                            >
-                             Views
-                            </Button>
-                        </Stack>
-                    </Stack>
-
-                    <Stack className="list-category-section">
-                        <Stack className="product-category">
-                            <div className="category-main">
+                       
+                        <Stack className="filter-box">
+                            <div className="category-box">
                                 <Button variant="contained" color="secondary">
-                                    Other
+                                   new
                                     </Button>
-                                <Button variant="contained" color="secondary"  size="medium">
-                                    Dessert
+    
+                                <Button variant="contained" color="secondary">
+                                    price
                                     </Button>
                                 <Button variant="contained" color="secondary">
-                                    Drink
-                                    </Button>
-                                <Button variant="contained" color="secondary">
-                                    Salad
-                                    </Button>
-                                <Button variant="contained" color="primary">
-                                    Dish
+                                   Best
                                     </Button>
                             </div>
                         </Stack>
+                       
+                         <Stack className="category-main">
+                            <div >
+                                <Button variant="contained" color="secondary">
+                                    All SOFAS
+                                    </Button>
+                                <Button variant="contained" color="secondary" >
+                                    Luxury
+                                    </Button>
+                                <Button variant="contained" color="secondary">
+                                    Modern
+                                    </Button>
+                                <Button variant="contained" color="secondary">
+                                    Classic
+                                    </Button>
+                                <Button variant="contained" color="primary">
+                                    retro
+                                    </Button>
+                            </div>
+                        </Stack>
+                    </Stack>
+
+                 
+
+                    
+
+                
+                       
                         <Stack className="product-wrapper">
                               {products.length !== 0 ? (
                               products.map((product, index) => {
@@ -99,28 +88,36 @@ export default function Products() {
                                         className="product-img"
                                         sx={{backgroundImage: `url(${product.imagePath})`}}
                                         >
-                                        <div className="product-sale">Normal Size</div>
-                                        <Button className="shop-btn">
+                                        <div className="product-sale">Best Selling</div>
+                                         <Button className="view-btn" sx={{right:"36px"}}>
+                                            <Badge badgeContent={20} color="secondary" >
+                                                <RemoveRedEyeIcon className="eyeicon" 
+                                                sx={{color: 0 ? "gray" : "white"}} />
+                                            </Badge>
+                                        </Button>
+                                        </Stack>
+
+                                        <Box className="product-desc">
+                                            <div className="product-info">
+                                                 <span className="product-type">
+                                                LUXURY
+                                            </span>
+                                             <span className="product-name">
+                                                {product.productName}
+                                            </span>
+                                            </div>
+                                           <div className="product-shopping">
+                                            <div className="product-price">
+                                               <p>$200</p> 
+                                            </div>
+                                             <Button className="shop-btn">
                                             <img
                                              src="/icons/shopping-cart.svg"
                                              style={{display: "flex"}}
                                              />
                                         </Button>
-                                        <Button className="view-btn" sx={{right:"36px"}}>
-                                            <Badge badgeContent={20} color="secondary">
-                                                <RemoveRedEyeIcon 
-                                                sx={{color: 0 ? "gray" : "white"}} />
-                                            </Badge>
-                                        </Button>
-                                        </Stack>
-                                        <Box className="product-desc">
-                                            <span className="product-title">
-                                                {product.productName}
-                                            </span>
-                                            <div className="product-desc">
-                                                <MonetizationOnIcon/>
-                                                {12}
-                                            </div>
+                                           </div>
+                                            
                                         </Box>
                                      </Stack>
                                 );
@@ -129,7 +126,7 @@ export default function Products() {
                              (<Box className="no-data"> Products are not available now!</Box>
                              )}
                         </Stack>
-                    </Stack>
+                    
 
                     <Stack className="pagination-section">
                         <Pagination
@@ -151,29 +148,10 @@ export default function Products() {
                 </Stack>
             </Container>
 
-            <div className="brands-logo">
-                <Container className="family-brands">
-                    <Box className="category-title">Our Family Brands</Box>
-                    <Stack className="brand-list">
-                        <Box className="review-box">
-                            <img src={"/img/gurme.webp"} alt=""/>
-                        </Box>
-                        <Box className="review-box">
-                            <img src={"/img/seafood.webp"} alt=""/>
-                        </Box>
-                        <Box className="review-box">
-                            <img src={"/img/doner.webp"} alt=""/>
-                        </Box>
-                        <Box className="review-box">
-                            <img src={"/img/sweets.webp"} alt=""/>
-                        </Box>
-                    </Stack>
-                </Container>
-            </div>
-
             <div className="address">
                 <Container className="address-area"  maxWidth = {"lg"}>
                     <Box className="title">Our Address</Box>
+                    <iframe src="https://lottie.host/embed/084cf2e0-b1be-4f6a-a51a-be2a23551693/Mq8GmxAQOE.lottie"></iframe>
                     <iframe
                     style={{marginTop: "60px"}}
                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d96326.03685561026!2d28.92022666528895!3d41.02112846139867!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cab82bea99445f%3A0x6ed7f4baceb4476c!2sMaiden's%20Tower!5e0!3m2!1sen!2skr!4v1757106097524!5m2!1sen!2skr"

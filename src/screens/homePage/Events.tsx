@@ -13,6 +13,7 @@ SwiperCore.use([Autoplay, Navigation, Pagination]);
 
 export default function Events() {
   return (
+    
     <div className={"events-frame"}>
       <Stack className={"events-main"}>
         <Box className={"events-text"}>

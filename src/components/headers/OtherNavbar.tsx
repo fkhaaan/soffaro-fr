@@ -10,29 +10,29 @@ export default function OtherNavbar() {
                 >
                 <Box>
                     <NavLink to="/">
-                        <img className="brand-logo" src="/icons/burak.svg"/>
+                        <p className="brand-name">SOFFARO</p>
                     </NavLink>
                 </Box>
                 <Stack className="links"
                 >
                 <Box className={"hover-line"}>
-                   <NavLink  to="/" >Home</NavLink>
+                   <NavLink  to="/" >HOME</NavLink>
                 </Box>
                   <Box className={"hover-line"}>
-                   <NavLink to="/products" activeClassName="underline">Products</NavLink>
+                   <NavLink to="/products" activeClassName="underline">SOFAS</NavLink>
                 </Box>
                 {authMember ? (  
                     <Box className={"hover-line"}>
-                   <NavLink to="/orders" activeClassName="underline">Orders</NavLink>
+                   <NavLink to="/orders" activeClassName="underline">ORDERS</NavLink>
                 </Box>
                 ) : null}
                   {authMember ? (  
                     <Box className={"hover-line"}>
-                   <NavLink to="/member-page" activeClassName="underline">My Page</NavLink>
+                   <NavLink to="/member-page" activeClassName="underline">MY PAGE</NavLink>
                 </Box>
                 ) : null}
                   <Box className={"hover-line"}>
-                   <NavLink to="/help" activeClassName="underline">Help</NavLink>
+                   <NavLink to="/help" activeClassName="underline">CONTACT</NavLink>
                 </Box>
                
                  <Basket />
@@ -46,7 +46,7 @@ export default function OtherNavbar() {
                         </Button>
                         </Box>
                 ) : (<img className="user-avatar"
-                    src="/icons/default-user.svg"
+                    src="/icons/default-user.webp"
                     aria-haspopup={"true"}
                  />)}
     
