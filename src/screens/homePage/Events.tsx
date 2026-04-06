@@ -1,23 +1,21 @@
-import { Box, Stack } from "@mui/material";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { plans } from "../../lib/data/plans";
-import SwiperCore from "swiper";
-import{ Autoplay, Navigation, Pagination } from "swiper/modules";
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
+import { Box, Stack } from "@mui/material"
+import { Swiper, SwiperSlide } from "swiper/react"
+import { plans } from "../../lib/data/plans"
+import SwiperCore from "swiper"
+import { Autoplay, Navigation, Pagination } from "swiper/modules"
+import "swiper/css"
+import "swiper/css/navigation"
+import "swiper/css/pagination"
 
-SwiperCore.use([Autoplay, Navigation, Pagination]);
+SwiperCore.use([Autoplay, Navigation, Pagination])
 //yangi swiperni ishlatt
-
 
 export default function Events() {
   return (
-    
     <div className={"events-frame"}>
       <Stack className={"events-main"}>
         <Box className={"events-text"}>
-          <span className={"category-title"}>Events</span>
+          <span className={"category-title"}>EVENTS</span>
         </Box>
 
         <Swiper
@@ -50,7 +48,6 @@ export default function Events() {
                       <div className={"event-title-speaker"}>
                         <strong>{value.title}</strong>
                         <div className={"event-organizator"}>
-                          <img src={"/icons/speaker.svg"} />
                           <p className={"spec-text-author"}>{value.author}</p>
                         </div>
                       </div>
@@ -71,7 +68,7 @@ export default function Events() {
                   </Box>
                 </Box>
               </SwiperSlide>
-            );
+            )
           })}
         </Swiper>
         <Box className={"prev-next-frame"}>
@@ -88,5 +85,5 @@ export default function Events() {
         </Box>
       </Stack>
     </div>
-  );
+  )
 }

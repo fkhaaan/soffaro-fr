@@ -1,4 +1,4 @@
-import React from "react";
+
 import { Box, Stack} from "@mui/material";
 import Button from "@mui/material/Button";
 import TabPanel from "@mui/lab/TabPanel";
@@ -8,23 +8,23 @@ export default function PausedOrders() {
   return (
     <TabPanel value={"1"}>
         <Stack>
-            {[1, 2].map((ele, index) => {
+            {[1, 2].map((_ele, index) => {
                 return (
                     <Box key={index} className="order-main-box">
                         <Box className="order-box-scroll">
-                            {[1,2,3].map((ele2, index2) => {
+                            {[1,2,3].map((_ele2, index2) => {
                                 return (
                                     <Box key={index2} className="order-name-price">
                                         <img 
                                         src="/img/lavash.webp" alt=""
-                                        className="order-dish-img"
+                                        className="order-sofa-img"
                                         />
-                                        <p className="title-dish">Lavash</p>
+                                        <p className="title-sofa">Green Sofa</p>
                                         <Box className="price-box">
-                                            <p>$9</p>
+                                            <p>$244</p>
                                             <img src="/icons/close.svg" alt=""/>
                                              <img src="/icons/pause.svg" alt=""/>
-                                             <p style={{marginLeft: "15"}}>$24</p>
+                                             <p style={{marginLeft: "15"}}>$244</p>
                                         </Box>
                                     </Box>
                                 );
@@ -33,18 +33,19 @@ export default function PausedOrders() {
                               <Box className="total-price-box">
                             <Box className="box-total">
                                 <p>Product price</p>
-                                <p>$22</p>
+                                <p>$244</p>
                                 <img src="/icons/plus.svg" style={{marginLeft: "20px"}} alt=""/>
                                 <p>delivery cost</p>
-                                <p>$2</p>
+                                <p>$30</p>
                                 <img src="/icons/pause.svg" style={{marginLeft: "20px"}} alt=""/>
                                 <p>Total</p>
-                                <p>$24</p>
+                                <p>$274</p>
                             </Box>
+                          </Box>
+                          <Box className="box-btn" >
                             <Button 
                             variant="contained" 
-                            className="verify-button"
-                            color="secondary"
+                            className="cancel-button"
                             >
                             Cancel
                             </Button>
@@ -52,6 +53,7 @@ export default function PausedOrders() {
                               Payment
                             </Button>
                           </Box>
+                           
                     </Box>
                 );
             })}

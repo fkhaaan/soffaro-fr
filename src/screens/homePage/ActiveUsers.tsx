@@ -1,47 +1,46 @@
-
-import { Box, Container, Stack } from "@mui/material";
-import Card from '@mui/joy/Card';
-import { CssVarsProvider, Typography } from "@mui/joy";
-import CardOverflow from "@mui/joy/CardOverflow";
-import AspectRatio from "@mui/joy/AspectRatio";
+import { Box, Container, Stack } from "@mui/material"
+import Card from "@mui/joy/Card"
+import { CssVarsProvider, Typography } from "@mui/joy"
+import CardOverflow from "@mui/joy/CardOverflow"
+import AspectRatio from "@mui/joy/AspectRatio"
 
 const activeUsers = [
-    {memberNick: "Martin", memberImage: "/img/martin.webp"},
-    {memberNick: "Khan", memberImage: "/img/khan.jpeg"},
-    {memberNick: "Rose", memberImage: "/img/rose.webp"},
-    {memberNick: "Nusret", memberImage: "/img/nusret.webp"},
-];
+  { memberNick: "Jacky", memberImage: "/img/martin.webp" },
+  { memberNick: "Khan", memberImage: "/img/khan.jpeg" },
+  { memberNick: "Rizz", memberImage: "/img/rose.webp" },
+  { memberNick: "Beck", memberImage: "/img/nusret.webp" },
+]
 
 export default function ActiveUsers() {
-    return (
+  return (
     <div className="active-users-frame">
-        <Container>
-            <Stack className="main">
-                <Box className="category-title">Active Users</Box>
-                <Stack className="cards-frame">
-                    <CssVarsProvider>
-                        {activeUsers.length !== 0 ? (  
-                             activeUsers.map((ele, index) => {
-                            return (
-                                <Card key={index} variant="outlined" className={"card"}>
-                                    <CardOverflow>
-                                        <AspectRatio ratio={"1"}>
-                                            <img src={ele.memberImage} alt="" />
-                                        </AspectRatio>
-                                    </CardOverflow>
-                                         <Typography className="member-nickname">
-                                             {ele.memberNick}
-                                         </Typography>
-                                 </Card>
-                               );
-                             })
-                        ) : (
-                        <Box className="no-data">No Active Users now!</Box>
-                        )}
-                    </CssVarsProvider>
-                </Stack>
-            </Stack>
-        </Container>
+      <Container>
+        <Stack className="main">
+          <Box className="category-title">TOP USERS</Box>
+          <Stack className="cards-frame">
+            <CssVarsProvider>
+              {activeUsers.length !== 0 ? (
+                activeUsers.map((ele, index) => {
+                  return (
+                    <Card key={index} variant="outlined" className={"card"}>
+                      <CardOverflow>
+                        <AspectRatio ratio={"1"}>
+                          <img src={ele.memberImage} alt="" />
+                        </AspectRatio>
+                      </CardOverflow>
+                      <Typography className="member-nickname">
+                        {ele.memberNick}
+                      </Typography>
+                    </Card>
+                  )
+                })
+              ) : (
+                <Box className="no-data">No Active Users now!</Box>
+              )}
+            </CssVarsProvider>
+          </Stack>
+        </Stack>
+      </Container>
     </div>
-);
+  )
 }

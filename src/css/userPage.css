@@ -39,11 +39,11 @@
 	display: flex;
 	justify-content: center;
 	border-bottom: 1px solid #f8f8ff;
-	font-family: 'Poppins';
+	 font-family:"Inter", "Roboto", "Helvetica", "Arial", sans-serif;
 	font-style: normal;
 	font-weight: 600;
 	font-size: 45px;
-	color: #f8f8ff;
+	color: #0d0d0e;
 }
 
 .my-page-left .menu-content {
@@ -86,9 +86,10 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	background: #f6f2ff;
-	box-shadow: 15px 14px 4px rgba(0, 0, 0, 0.25), inset -1px 0px 16px 13px rgb(24 23 112 / 20%);
+	background: white;
+	border: 2px solid rgb(212, 175, 55);
 	border-radius: 16px;
+	cursor: pointer;
 }
 
 .user-page .order-info-box .settings-btn {
@@ -108,7 +109,7 @@
 .user-page .order-info-box .order-user-img .order-user-avatar {
 	width: 150px;
 	height: 150px;
-	filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+	filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.35));
 	border-radius: 37px;
 }
 
@@ -126,21 +127,30 @@
 
 .user-page .order-info-box .order-user-name {
 	margin-top: 10px;
-	font-family: 'Commissioner';
+	font-family:"Inter", "Roboto", "Helvetica", "Arial", sans-serif;
 	font-style: normal;
-	font-weight: 500;
+	font-weight: 600;
 	font-size: 28px;
 	line-height: 36px;
-	color: #08090d;
+	color: lab(17.94% -0.2 -0.81);
 }
 
 .user-page .order-info-box .order-user-prof {
-	font-family: 'Commissioner';
+	font-family:"Inter", "Roboto", "Helvetica", "Arial", sans-serif;
 	font-style: normal;
 	font-weight: 500;
 	font-size: 20px;
 	line-height: 36px;
 	color: #a1a1a1;
+}
+
+.user-page .order-info-box .order-user-prof2 {
+	font-family:"Inter", "Roboto", "Helvetica", "Arial", sans-serif;
+	font-style: normal;
+	font-weight: 500;
+	font-size: 20px;
+	line-height: 36px;
+	color: hsl(0, 1%, 31%);
 }
 
 .user-page .order-info-box .user-media-box {
@@ -156,7 +166,7 @@
 	width: 90%;
 	display: flex;
 	justify-content: center;
-	font-family: 'DM Sans';
+	font-family:"Inter", "Roboto", "Helvetica", "Arial", sans-serif;
 	font-style: normal;
 	font-weight: 400;
 	font-size: 16px;
@@ -219,9 +229,9 @@
 	flex-direction: column;
 }
 .user-page .settings .spec-label {
-	font-family: 'Source Serif Pro';
+	font-family:"Inter", "Roboto", "Helvetica", "Arial", sans-serif;
 	font-style: normal;
-	font-weight: 400;
+	font-weight: 500;
 	font-size: 16px;
 	line-height: 25px;
 	color: #f8f8ff;
@@ -235,9 +245,9 @@
 	height: 54px;
 	border: none;
 	background: #f7f7f7;
-	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+	border: 2px solid rgb(212, 175, 55);
 	border-radius: 5px;
-	font-family: 'GT Walsheim Pro';
+	font-family:"Inter", "Roboto", "Helvetica", "Arial", sans-serif;
 	font-style: normal;
 	font-weight: 400;
 	font-size: 15px;
@@ -245,22 +255,32 @@
 	color: #4f547b;
 }
 
+.user-page .settings .spec-input:hover {
+  border-color: oklab(36.452% -0.00555 -0.22796);
+  color: rgb(85, 85, 85);
+}
+
 .user-page .settings .spec-textarea {
 	position: relative;
 	margin-top: 10px;
 	padding: 20px;
 	width: 100%;
-	height: 200px;
+	height: 70px;
 	border: none;
 	background: #f7f7f7;
-	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+	border: 2px solid rgb(212, 175, 55);
 	border-radius: 5px;
-	font-family: 'GT Walsheim Pro';
+	font-family:"Inter", "Roboto", "Helvetica", "Arial", sans-serif;
 	font-style: normal;
 	font-weight: 400;
 	font-size: 15px;
 	line-height: 26px;
 	color: #4f547b;
+}
+
+.user-page .settings .spec-textarea:hover {
+  border-color: oklab(36.452% -0.00555 -0.22796);
+  color: rgb(85, 85, 85);
 }
 
 .user-page .settings .member-media-frame {
@@ -271,12 +291,14 @@
 	height: auto;
 	display: flex;
 	border-radius: 5px;
+	margin-left: 230px;
 }
 
 .user-page .settings .member-media-frame .mb-image {
 	width: 100px;
 	height: 100px;
 	border-radius: 50%;
+	margin-right: 20px;
 }
 
 .user-page .settings .media_change-box {
@@ -289,7 +311,7 @@
 }
 
 .user-page .settings .media-change-box span {
-	font-family: 'GT Walsheim Pro';
+	font-family:"Inter", "Roboto", "Helvetica", "Arial", sans-serif;
 	font-style: normal;
 	font-weight: 400;
 	font-size: 16px;
@@ -299,7 +321,7 @@
 
 .user-page .settings .media-change-box p {
 	margin: 10px 0px 14px 0px;
-	font-family: 'GT Walsheim Pro';
+	font-family:"Inter", "Roboto", "Helvetica", "Arial", sans-serif;
 	font-style: normal;
 	font-weight: 400;
 	font-size: 14px;
@@ -309,8 +331,8 @@
 
 .user-page .settings .up-del-box {
 	position: relative;
-	width: 37px;
-	height: 37px;
+	width: 30px;
+	height: 30px;
 	display: flex;
 	background: #cbcbcb;
 	border-radius: 8px;
@@ -334,4 +356,18 @@
 	display: flex;
 	justify-content: flex-end;
 	margin-top: 25px;
+}
+
+.user-page .settings .save-box button {
+	   background: white;
+    color: rgb(212, 175, 55);
+    max-height: 40px;
+    border: 1.5px solid rgb(212, 175, 55);
+  border-radius: 25px;
+  transition: 0.25s;
+}
+
+.user-page .settings .save-box button:hover {
+    border-color: #000000;
+  color: rgb(85, 85, 85);
 }

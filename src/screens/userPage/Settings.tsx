@@ -6,7 +6,7 @@ export function Settings() {
   return (
     <Box className={"settings"}>
       <Box className={"member-media-frame"}>
-        <img src={"/icons/default-user.svg"} className={"mb-image"} />
+        <img src={"/icons/default-user.webp"} className={"mb-image"} />
         <div className={"media-change-box"}>
           <span>Upload image</span>
           <p>JPG, JPEG, PNG formats only!</p>
@@ -64,7 +64,7 @@ export function Settings() {
         </div>
       </Box>
       <Box className={"save-box"}>
-        <Button variant={"contained"}>Save</Button>
+        <Button variant={"contained"} color="secondary" sx={{fontWeight:"600", }}>Save</Button>
       </Box>
     </Box>
   );

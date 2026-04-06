@@ -3,6 +3,7 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import TelegramIcon from "@mui/icons-material/Telegram";
 import YouTubeIcon from "@mui/icons-material/YouTube";
+import LocationPinIcon from '@mui/icons-material/LocationOn';
 import { Settings } from "./Settings";
 import "../../css/userPage.css";
 
@@ -29,22 +30,22 @@ export default function UserPage() {
               >
                 <div className={"order-user-img"}>
                   <img
-                    src={"/icons/default-user.svg"}
+                    src={"/icons/default-user.webp"}
                     className={"order-user-avatar"}
                   />
-                  <div className={"order-user-icon-box"}>
-                    <img src={"/icons/user-badge.svg"} />
-                  </div>
                 </div>
                 <span className={"order-user-name"}>KHAN</span>
                 <span className={"order-user-prof"}>User</span>
-                <span className={"order-user-prof"}>Busan, South Korea</span>
+                <span className={"order-user-prof2"}>
+                  <LocationPinIcon fontSize="small"/>
+                  Busan, South Korea
+                  </span>
               </Box>
               <Box className={"user-media-box"}>
-                <FacebookIcon />
-                <InstagramIcon />
-                <TelegramIcon />
-                <YouTubeIcon />
+                <FacebookIcon  sx={{color: "rgb(212, 175, 55)"}}/>
+                <InstagramIcon sx={{color: "rgb(212, 175, 55)"}} />
+                <TelegramIcon sx={{color: "rgb(212, 175, 55)"}}/>
+                <YouTubeIcon sx={{color: "rgb(212, 175, 55)"}}/>
               </Box>
               <p className={"user-desc"}>No description</p>
             </Box>

@@ -5,6 +5,7 @@ import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import Divider from "../../components/divider";
 import Button from "@mui/material/Button";
 import Rating from "@mui/material/Rating";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/navigation";
@@ -16,7 +17,7 @@ export default function ChosenProduct() {
    useParams();
   return (
     <div className={"chosen-product"}>
-      <Box className={"title"}>Product Detail</Box>
+      <Box className={"title"}>SOFA DETAIL</Box>
       <Container className={"product-container"}>
         <Stack className={"chosen-product-slider"}>
           <Swiper
@@ -26,7 +27,7 @@ export default function ChosenProduct() {
             modules={[FreeMode, Navigation, Thumbs]}
             className="swiper-area"
           >
-            {["/img/cutlet.webp", "/img/kebab-fresh.webp"].map(
+            {["/img/threegreen.png", "/img/threegreen.png"].map(
               (ele: string, index: number) => {
                 return (
                   <SwiperSlide key={index}>
@@ -39,10 +40,10 @@ export default function ChosenProduct() {
         </Stack>
         <Stack className={"chosen-product-info"}>
           <Box className={"info-box"}>
-            <strong className={"product-name"}>Kebab</strong>
-            <span className={"resto-name"}>Burak</span>
+            <strong className={"product-name"}>GREEN SOFA</strong>
+            <span className={"collection-name"}>Classic</span>
             <Box className={"rating-box"}>
-              <Rating name="half-rating" defaultValue={2.5} precision={0.5} />
+              <Rating name="half-rating" defaultValue={4.5} precision={0.5} />
               <div className={"evaluation-box"}>
                 <div className={"product-view"}>
                   <RemoveRedEyeIcon sx={{ mr: "10px" }} />
@@ -50,14 +51,14 @@ export default function ChosenProduct() {
                 </div>
               </div>
             </Box>
-            <p className={"product-desc"}>Our best product</p>
-            <Divider height="1" width="100%" bg="#000000" />
+            <p className={"product-desc"}>Our classic best sofa</p>
+            <Divider height="3" width="100%" bg="rgb(212, 175, 55)" />
             <div className={"product-price"}>
-              <span>Price:</span>
+              <span>PRICE:</span>
               <span>$12</span>
             </div>
             <div className={"button-box"}>
-              <Button variant="contained">Add To Basket</Button>
+              <Button startIcon={<ShoppingCartIcon />} variant="contained" color="secondary">Add To Basket</Button>
             </div>
           </Box>
         </Stack>

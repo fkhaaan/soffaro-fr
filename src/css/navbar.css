@@ -50,6 +50,14 @@ line-height: 90%;
  color: #f8f8ff;
 }
 
+.home-navbar .navbar-container .menu .links  .signup-button {
+   background: none;
+   border: solid 1px  rgb(212, 175, 55);
+    color: rgb(212, 175, 55);
+  
+}
+
+
 .home-navbar .navbar-container .menu .user-avatar {
 width: 45px;
 height: 45px;
@@ -206,27 +214,13 @@ border-radius: 24px;
 }
 
 
-.home-navbar .navbar-container .header-frame  .signup-button {
-    width: 210px;
-    height: 60px;
-    border-radius: 4px;
-    background: rgb(60, 59, 59);
-    text-align: center;
-    font-family: Poppins;
-    font-size: 17px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    color: #f8f8ff;
-}
-
 
 .other-navbar {
     width: 100%;
     height: 400px;
     display: flex;
     background: 
-    linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)),
+    linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)),
     url('/public/img/main55.jpg');
     background-size: cover;
 }
@@ -262,7 +256,7 @@ line-height: 90%;
 
 
 .other-navbar .navbar-container .menu .links .login-button {
- background: #3776cc; 
+ background: none; 
  color: #f8f8ff;
 }
 
@@ -283,13 +277,13 @@ border-radius: 24px;
 .other-navbar .underline {
     display:block;
     content: "";
-    border-bottom: solid 2px #d7b686
+    border-bottom: solid 2px #D4AF37;
 }
 
 .other-navbar .hover-line::after {
     display: block;
     content: "";
-    border-bottom: solid 2px #d7b686;
+    border-bottom: solid 2px #D4AF37;
     transform: scaleX(0);
     transition: transform 250ms ease-in-out;
 }
@@ -312,7 +306,7 @@ border-radius: 24px;
   height: auto;
   display: flex;
   flex-direction: column;
-  background: #f8f8ff;
+  background: oklab(97.33500000000001% 0.00027 0.00274);
   border-radius: 16px;
 }
 
@@ -323,11 +317,9 @@ border-radius: 24px;
   display: flex;
   flex-direction: row;
   align-items: center;
-  background: #d7b586;
-  border-width: 1px 0px;
-  border-style: solid;
-  border-color: #343434;
+  background:#D4AF37;
 }
+
 
 .basket-frame .basket-info-box {
   position: relative;
@@ -349,9 +341,9 @@ border-radius: 24px;
 .basket-info-box .product-name {
   margin-left: 11px;
   width: 185px;
-  font-family: "Poppins";
+   font-family:"Inter", "Roboto", "Helvetica", "Arial", sans-serif;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 500;
   font-size: 20px;
   line-height: 30px;
   color: #000000;
@@ -359,12 +351,12 @@ border-radius: 24px;
 
 .basket-info-box .product-price {
   width: 80px;
-  font-family: "Poppins";
+   font-family:"Inter", "Roboto", "Helvetica", "Arial", sans-serif;
   font-style: normal;
   font-weight: 600;
   font-size: 15px;
   line-height: 22px;
-  color: #ae0000;
+  color: hwb(247 4% 64%);
 }
 
 .basket-info-box
@@ -397,9 +389,9 @@ border-radius: 24px;
 .basket-order .price {
   width: 200px;
   display: flex;
-  font-family: "Poppins";
+  font-family:"Inter", "Roboto", "Helvetica", "Arial", sans-serif;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 500;
   font-size: 20px;
   line-height: 30px;
   color: #000000;

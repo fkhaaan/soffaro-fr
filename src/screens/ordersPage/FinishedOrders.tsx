@@ -15,9 +15,9 @@ export default function FinishedOrders() {
                                      <Box key={index2} className="order-name-price">
                                          <img 
                                          src="/img/kebab-fresh.webp" alt=""
-                                         className="order-dish-img"
+                                         className="order-sofa-img"
                                          />
-                                         <p className="title-dish">Kebab</p>
+                                         <p className="title-sofa">Kebab</p>
                                          <Box className="price-box">
                                              <p>$12</p>
                                              <img src="/icons/close.svg" alt=""/>

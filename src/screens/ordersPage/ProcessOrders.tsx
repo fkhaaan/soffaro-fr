@@ -17,9 +17,9 @@ export default function ProcessOrders() {
                                       <Box key={index2} className="order-name-price">
                                           <img 
                                           src="/img/kebab.webp" alt=""
-                                          className="order-dish-img"
+                                          className="order-sofa-img"
                                           />
-                                          <p className="title-dish">Lavash</p>
+                                          <p className="title-sofa">Green Sofa</p>
                                           <Box className="price-box">
                                               <p>$11</p>
                                               <img src="/icons/close.svg" alt=""/>
@@ -33,19 +33,19 @@ export default function ProcessOrders() {
                           <Box className="total-price-box">
                             <Box className="box-total">
                                 <p>Product price</p>
-                                <p>$22</p>
+                                <p>$244</p>
                                 <img src="/icons/plus.svg" style={{marginLeft: "20px"}} alt=""/>
                                 <p>delivery cost</p>
-                                <p>$2</p>
+                                <p>$30</p>
                                 <img src="/icons/pause.svg" style={{marginLeft: "20px"}} alt=""/>
                                 <p>Total</p>
-                                <p>$24</p>
+                                <p>$274</p>
                             </Box>
                             <p className="data-compl">
                                 {moment().format("YY-MM-DD HH:mm")}
                             </p>
                             <Button variant="contained" className="verify-button">
-                                Verify to Fulfil
+                                Confirm Order
                             </Button>
                           </Box>
                       </Box>

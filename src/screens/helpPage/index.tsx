@@ -1,14 +1,17 @@
 import React from "react";
-import { Box, Container, Stack, Tabs } from "@mui/material";
-import Typography from "@mui/material/Typography";
+import { Box, Container,  Stack, Tabs } from "@mui/material";
+import Grid from "@mui/material/Grid";
 import Tab from "@mui/material/Tab";
 import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import Button from "@mui/material/Button";
 import TabContext from "@mui/lab/TabContext";
 import TabPanel from "@mui/lab/TabPanel";
+import Typography from '@mui/joy/Typography';
+import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
+import EmailIcon from '@mui/icons-material/Email';
+import LocationPinIcon from '@mui/icons-material/LocationPin';
 import "../../css/help.css";
 import { faq } from "../../lib/data/faq";
 import { terms } from "../../lib/data/terms";
@@ -26,22 +29,23 @@ export default function HelpPage() {
       <Container className={"help-container"}>
         <TabContext value={value}>
           <Box className={"help-menu"}>
-            <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+            <Box sx={{ borderBottom: 1, borderColor: "#D4AF37" }}>
               <Tabs
                 value={value}
                 onChange={handleChange}
                 aria-label="lab API tabs example"
                 className={"table_list"}
               >
-                <Tab label="TERMS" value={"1"} />
-                <Tab label="FAQ" value={"2"} />
-                <Tab label="CONTACT" value={"3"} />
+                 <Tab label="CONTACT" value={"1"}  sx={{ color: "#dab440", fontWeight: 600 }}/>
+                <Tab label="TERMS" value={"3"} sx={{ color: "#dab440", fontWeight: 600 }} />
+                <Tab label="FAQ" value={"2"} sx={{ color: "#dab440", fontWeight: 600 }} />
+               
               </Tabs>
             </Box>
           </Box>
           <Stack>
             <Stack className={"help-main-content"}>
-              <TabPanel value={"1"}>
+              <TabPanel value={"3"}>
                 <Stack className={"rules-box"}>
                   <Box className={"rules-frame"}>
                     {terms.map((value, number) => {
@@ -70,57 +74,137 @@ export default function HelpPage() {
                   })}
                 </Stack>
               </TabPanel>
-              <TabPanel value={"3"}>
-                <Stack className={"admin-letter-box"}>
-                  <Stack className={"admin-letter-container"}>
-                    <Box className={"admin-letter-frame"}>
-                      <span>Contact us!</span>
-                      <p>Fill out below form to send a message!</p>
-                    </Box>
-                    <form
-                      action={"#"}
-                      method={"POST"}
-                      className={"admin-letter-frame"}
-                    >
-                      <div className={"admin-input-box"}>
-                        <label>Your name</label>
-                        <input
-                          type={"text"}
-                          name={"memberNick"}
-                          placeholder={"Type your name here"}
-                        />
-                      </div>
-                      <div className={"admin-input-box"}>
-                        <label>Your email</label>
-                        <input
-                          type={"text"}
-                          name={"memberEmail"}
-                          placeholder={"Type your email here"}
-                        />
-                      </div>
-                      <div className={"admin-input-box"}>
-                        <label>Message</label>
-                        <textarea
-                          name={"memberMsg"}
-                          placeholder={"Your message"}
-                        ></textarea>
-                      </div>
-                      <Box
-                        display={"flex"}
-                        justifyContent={"flex-end"}
-                        sx={{ mt: "30px" }}
-                      >
-                        <Button type={"submit"} variant="contained">
-                          Send
-                        </Button>
-                      </Box>
-                    </form>
+              <TabPanel value={"1"}>
+                <Container className={"contact-area"}>
+                  <Stack>
+
+                <Grid flexDirection={"row"} container spacing={8}>
+               <Grid item xs={12} md={4}>
+              <Box className="card-box">
+                <Box display={"flex"} flexDirection={"column"} justifyContent={"space-between"} alignItems={"center"}>
+                  <LocalPhoneIcon/>
+                  <Typography
+                          level="h3"
+                          fontSize="22px"
+                          textColor="black"
+                          fontWeight={"600"}
+                          lineHeight={"2.5"}
+                          >
+                    BY PHONE
+                </Typography>
+                <Typography
+                          level="h1"
+                          fontSize="16px"
+                          textColor="black"
+                          fontWeight={"400"}
+                          lineHeight={"2.5"}
+                          >
+                    Talk to our advisors
+                </Typography>
+                <Typography
+                          level="h3"
+                          fontSize="lg"
+                          textColor="black"
+                          fontWeight={"600"}
+                          lineHeight={"2"}
+                          >
+                    +82 10 9989 7711
+                </Typography>
+                </Box>
+                </Box>
+             </Grid>
+
+             <Grid item xs={12} md={4}>
+              <Box className="card-box">
+                <Box display={"flex"} flexDirection={"column"} justifyContent={"space-between"} alignItems={"center"}>
+                  <EmailIcon/>
+                  <Typography
+                          level="h3"
+                          fontSize="22px"
+                          textColor="black"
+                          fontWeight={"600"}
+                          lineHeight={"2.5"}
+                          >
+                    BY EMAIL
+                </Typography>
+                <Typography
+                          level="h1"
+                          fontSize="16px"
+                          textColor="black"
+                          fontWeight={"400"}
+                          lineHeight={"2.5"}
+                          >
+                    Send us your inquiry
+                </Typography>
+                <Typography
+                          level="h3"
+                          fontSize="lg"
+                          textColor="black"
+                          fontWeight={"600"}
+                          lineHeight={"2"}
+                          >
+                    info@soffaro-store.com
+                </Typography>
+                </Box>
+                
+              </Box>
+             </Grid>
+
+           <Grid  item xs={12} md={4}>
+         < Box className="card-box">
+         <Box display={"flex"} flexDirection={"column"} justifyContent={"space-between"} alignItems={"center"}>
+                  <LocationPinIcon/>
+                  <Typography
+                          level="h3"
+                          fontSize="22px"
+                          textColor="black"
+                          fontWeight={"600"}
+                          lineHeight={"2.5"}
+                          >
+                    IN STORE
+                </Typography>
+                <Typography
+                          level="h1"
+                          fontSize="16px"
+                          textColor="black"
+                          fontWeight={"400"}
+                          lineHeight={"2.5"}
+                          >
+                    Visit our flagship
+                </Typography>
+                <Typography
+                          level="h3"
+                          fontSize="lg"
+                          textColor="black"
+                          fontWeight={"600"}
+                          lineHeight={"2"}
+                          >
+                    Heundae-gu,Busan
+                </Typography>
+                </Box>
+         
+                </Box>
+                </Grid>
+               </Grid>
                   </Stack>
-                </Stack>
+                   <div className="address">
+                <Box className="address-area" sx={{width: "100%",height: "400px" }}>
+            <iframe
+            src="https://maps.google.com/maps?q=Haeundae%20Beach%20Busan&t=&z=13&ie=UTF8&iwloc=&output=embed"
+            width="980"
+            height="400"
+            style={{ border: 0, borderRadius: "12px" }}
+            loading="lazy"
+            />
+            </Box>
+            </div>
+                </Container>
               </TabPanel>
             </Stack>
           </Stack>
+
         </TabContext>
+        
       </Container>
     </div>
   );

@@ -7,7 +7,7 @@ import Typography from '@mui/joy/Typography';
 import { CssVarsProvider } from "@mui/joy/styles";
 
 
-const newDishes = [
+const newSofas = [
    {productName: "SuperSofa", imagePath: "/img/longblack.png"},
      {productName: "Future", imagePath: "/img/soffa.png"},
     {productName: "Future", imagePath: "/img/soffa.png"},
@@ -23,33 +23,40 @@ export default function NewSofas() {
 
                 <Stack className="cards-frame">
                     <CssVarsProvider>
-                        {newDishes.length !== 0 ? (  
-                             newDishes.map((ele, index) => {
+                        {newSofas.length !== 0 ? (  
+                             newSofas.map((ele, index) => {
                             return (
-                                <Card key={index} variant="outlined" className={"card"}>
-                                    <CardOverflow>
-                                        <div className="product-sale">New Added</div>
-                                        <AspectRatio ratio={"1"}>
-                                            <img src={ele.imagePath} alt="" />
-                                        </AspectRatio>
-                                    </CardOverflow>
+                              <Card
+                                key={index}
+                                variant="outlined"
+                                className={"card"}
+                              >
+                                <CardOverflow>
+                                  <div className="product-sale">New Added</div>
+                                  <AspectRatio ratio={"1"}>
+                                    <img src={ele.imagePath} alt="" />
+                                  </AspectRatio>
+                                </CardOverflow>
 
-                                    <CardOverflow variant="soft" className="product-detail">
-                                        <Stack className="info">
-                                            <Stack flexDirection={"row"}>
-                                                <Typography className="title">
-                                                    {ele.productName}
-                                                </Typography>
-                                            </Stack>
-                                            <Stack>
-                                                <Typography className="collection">
-                                                    CLASSIC
-                                                </Typography>
-                                            </Stack>
-                                        </Stack>
-                                    </CardOverflow>
-                                </Card>
-                            );
+                                <CardOverflow
+                                  variant="soft"
+                                  className="product-detail"
+                                >
+                                  <Stack className="info">
+                                    <Stack flexDirection={"row"}>
+                                      <Typography className="title">
+                                        {ele.productName}
+                                      </Typography>
+                                    </Stack>
+                                    <Stack>
+                                      <Typography className="collection">
+                                        CLASSIC
+                                      </Typography>
+                                    </Stack>
+                                  </Stack>
+                                </CardOverflow>
+                              </Card>
+                            )
                         })
                      ) : (
                         <Box className="no-data">Popular products are not available!</Box>

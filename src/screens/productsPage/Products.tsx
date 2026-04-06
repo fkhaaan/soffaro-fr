@@ -25,7 +25,7 @@ const products = [
 export default function Products() {
     return (
         <div className="products">
-            <Container>
+            <Container sx={{mt: "30px"}}>
                 <Stack flexDirection={"column"} alignItems={"center"}>
                     <Stack className="avatar-big-box">
                         <div className="single-search-big-box">
@@ -51,9 +51,10 @@ export default function Products() {
                                     </Button>
                             </div>
                         </Stack>
+                         </Stack>
                        
-                         <Stack className="category-main">
-                            <div >
+                         <Stack className="category-main"direction={"row"} spacing={1} justifyContent={"space-between"}>
+                            
                                 <Button variant="contained" color="secondary">
                                     All SOFAS
                                     </Button>
@@ -69,14 +70,11 @@ export default function Products() {
                                 <Button variant="contained" color="primary">
                                     retro
                                     </Button>
-                            </div>
+                           
                         </Stack>
-                    </Stack>
+                   
 
                  
-
-                    
-
                 
                        
                         <Stack className="product-wrapper">
@@ -147,20 +145,6 @@ export default function Products() {
                     </Stack>
                 </Stack>
             </Container>
-
-            <div className="address">
-                <Container className="address-area"  maxWidth = {"lg"}>
-                    <Box className="title">Our Address</Box>
-                    <iframe src="https://lottie.host/embed/084cf2e0-b1be-4f6a-a51a-be2a23551693/Mq8GmxAQOE.lottie"></iframe>
-                    <iframe
-                    style={{marginTop: "60px"}}
-                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d96326.03685561026!2d28.92022666528895!3d41.02112846139867!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cab82bea99445f%3A0x6ed7f4baceb4476c!2sMaiden's%20Tower!5e0!3m2!1sen!2skr!4v1757106097524!5m2!1sen!2skr"
-                     width="1320"
-                     height="500"
-                     referrerPolicy="no-referrer-when-downgrade"
-                    ></iframe>
-                </Container>
-            </div>
         </div>
     ); 
 }

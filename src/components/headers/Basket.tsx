@@ -8,7 +8,7 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 //import { useHistory } from "react-router-dom";
 
 export default function Basket() {
-  const authMember = null;
+  const authMember = true;
   ///const history = useHistory();
 
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -83,8 +83,8 @@ export default function Basket() {
                   <CancelIcon color={"primary"} />
                 </div>
                 <img src={"/img/fresh.webp"} className={"product-img"} />
-                <span className={"product-name"}>Kebab</span>
-                <p className={"product-price"}>$10 x 1</p>
+                <span className={"product-name"}>Green Sofa</span>
+                <p className={"product-price"}>$244 x 1</p>
                 <Box sx={{ minWidth: 120 }}>
                   <div className="col-2">
                     <button className="remove">-</button>{" "}
@@ -95,8 +95,8 @@ export default function Basket() {
             </Box>
           </Box>
           <Box className={"basket-order"}>
-            <span className={"price"}>Total: $100 (98 +2)</span>
-            <Button startIcon={<ShoppingCartIcon />} variant={"contained"}>
+            <span className={"price"}>Total: $1000 (98 +0)</span>
+            <Button startIcon={<ShoppingCartIcon />} variant={"contained"} color="secondary">
               Order
             </Button>
           </Box>

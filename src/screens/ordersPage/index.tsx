@@ -3,7 +3,6 @@ import { Box, Stack, Container } from "@mui/material";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import TabContext from "@mui/lab/TabContext";
-import LocationOnIcon from "@mui/icons-material/LocationOn";
 import PausedOrders from "./PausedOrders";
 import ProcessOrders from "./ProcessOrders";
 import FinishedOrders from "./FinishedOrders";
@@ -28,9 +27,9 @@ export default function OrdersPage() {
               aria-label="basic tabs example"
               className="table-list" 
               >
-                <Tab label="PAUSED ORDERS" value={"1"}/>
-                <Tab label="PROCESS ORDERS" value={"2"}/>
-                <Tab label="FINISHED ORDERS" value={"3"}/>
+                <Tab label="PAUSED ORDERS"  value={"1"} sx={{ color: "#dab440", fontWeight: 600 }}/>
+                <Tab label="PROCESS ORDERS" value={"2"} sx={{ color: "#dab440", fontWeight: 600 }}/>
+                <Tab label="FINISHED ORDERS" value={"3"} sx={{ color: "#dab440", fontWeight: 600 }}/>
               </Tabs>
              </Box>
             </Box>
@@ -42,30 +41,7 @@ export default function OrdersPage() {
           </TabContext>
         </Stack>
         <Stack className="order-right">
-          <Box className="order-info-box">
-            <Box className="member-box">
-              <div className="order-user-img">
-                <img 
-                src="/icons/default-user.svg"
-                className="order-user-avatar"/>
-                <div className="order-user-icon-box">
-                  <img
-                  src="/icons/user-badge.svg"
-                  className="order-user-prof-img"
-                  />
-                </div>
-              </div>
-              <span className="order-user-name">Khan</span>
-              <span className="order-user-prof">USER</span>
-            </Box>
-            <div className="liner"></div>
-            <div className="order-user-address">
-              <div style={{display: "flex"}}>
-                <LocationOnIcon/>
-              </div>
-              <div className="spec-address-txt">Busan, South Korea</div>
-            </div>
-          </Box>
+           
           <Box className="order-payment-box">
             <input 
             type="text"

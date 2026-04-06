@@ -4,7 +4,7 @@ import Basket from "./Basket";
 import Divider from "../divider";
 
 export default function HomeNavbar() {
-    const authMember = true;
+    const authMember = false;
     return <div className="home-navbar">
         <Container className="navbar-container">
             <Stack className="menu"
@@ -33,7 +33,7 @@ export default function HomeNavbar() {
             </Box>
             ) : null}
               <Box className={"hover-line"}>
-               <NavLink to="/help" activeClassName="underline">HELP</NavLink>
+               <NavLink to="/help" activeClassName="underline">CONTACT</NavLink>
             </Box>
             
             <Basket />
@@ -50,6 +50,15 @@ export default function HomeNavbar() {
                 src="/icons/default-user.webp"
                 aria-haspopup={"true"}
              />)}
+
+                <Box >
+                        {!authMember ? (
+                            <Button 
+                            variant="contained"
+                        className="signup-button">
+                            SIGN UP
+                            </Button>) : null}
+                     </Box>
 
             </Stack>
             </Stack>
@@ -69,10 +78,7 @@ export default function HomeNavbar() {
                          variant="outlined">EXPLORE COLLECTIONS</Button>
                     </Box>
                    
-                     <Box className="signup">
-                        {!authMember ? (<Button variant="contained"
-                        className="signup-button">SIGN UP</Button>) : null}
-                     </Box>
+                     
             </Stack>
             <Box className="collection-txt">
                         <a>LUXURY</a>
