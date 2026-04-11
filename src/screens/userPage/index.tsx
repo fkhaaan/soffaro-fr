@@ -56,7 +56,7 @@ export default function UserPage() {
                 <TelegramIcon sx={{color: "rgb(212, 175, 55)"}}/>
                 <YouTubeIcon sx={{color: "rgb(212, 175, 55)"}}/>
               </Box>
-              <p className={"user-desc"}>{"user-desc"}
+              <p className={"user-desc"}>
                 {authMember?.memberDesc
                   ? authMember.memberDesc
                   : "no description"}</p>

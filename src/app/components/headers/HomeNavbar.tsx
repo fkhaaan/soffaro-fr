@@ -1,5 +1,5 @@
 import { Box, Button, Container, ListItemIcon, Menu, MenuItem, Stack } from "@mui/material";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import Basket from "./Basket";
 import Divider from "../divider";
 import { CartItem } from "../../../lib/types/search";
@@ -25,6 +25,7 @@ interface HomeNavbarProps {
 }
 
 export default function HomeNavbar(props: HomeNavbarProps) {
+    const navigate = useNavigate();
     const {
         cartItems,
         onAdd,
@@ -163,7 +164,9 @@ export default function HomeNavbar(props: HomeNavbarProps) {
                     </Box>
                     <Box>
                          <Button className="explore-btn" 
-                         variant="outlined">EXPLORE COLLECTIONS</Button>
+                         variant="outlined"
+                        onClick={() => navigate("/products")}
+                         >EXPLORE COLLECTIONS</Button>
                     </Box>
                    
                      

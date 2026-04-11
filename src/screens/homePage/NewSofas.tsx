@@ -10,6 +10,7 @@ import { createSelector } from "@reduxjs/toolkit";
 import { useSelector } from "react-redux";
 import { Product } from "../../lib/types/product";
 import { serverApi } from "../../lib/config";
+import { useNavigate } from "react-router-dom";
 
 
 /** REDUX  SELECTOR */
@@ -20,6 +21,7 @@ const newSofasRetriever = createSelector(
 
 
 export default function NewSofas() {
+  const navigate = useNavigate();
   const {newSofas} = useSelector(newSofasRetriever);
 
     return (
@@ -76,7 +78,9 @@ export default function NewSofas() {
              <Box className="view-all">
                 <Button 
                 className="view-all-btn" 
-                 variant="outlined">VIEW ALL ARRIVALS</Button>
+                 variant="outlined"
+              onClick={() => navigate("/products")}
+                 >VIEW ALL ARRIVALS</Button>
             </Box>
         </Container>
     </div>

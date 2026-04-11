@@ -18,6 +18,7 @@ import ProductService from "../../app/services/ProductService";
 import { useNavigate } from "react-router-dom";
 import { serverApi } from "../../lib/config";
 import { ProductCollection } from "../../lib/enums/product.enum";
+import { CartItem } from "../../lib/types/search";
 
 
 const actionDispatch = (dispatch: Dispatch) => ({
@@ -29,9 +30,14 @@ const productsRetriever = createSelector(
     (products) => ({ products })
 );
 
+interface ProductsProps {
+    onAdd: (item: CartItem) => void;
+}
 
-export default function Products() {
 
+export default function Products(props: ProductsProps) {
+
+    const { onAdd } = props;
     const { setProducts } = actionDispatch(useDispatch());
     const { products } = useSelector(productsRetriever);
     const [productSearch, setProductSearch] = useState<ProductInquiry>({

@@ -8,7 +8,7 @@ import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { CartItem } from "../../../lib/types/search";
 import { useGlobals } from "../../hooks/useGlobals";
-import { Messages } from "../../../lib/config";
+import { Messages, serverApi } from "../../../lib/config";
 import { sweetErrorHandling } from "../../../lib/sweetAlert";
 import OrderService from "../../services/OrderService";
 import { useNavigate } from "react-router-dom";
@@ -55,7 +55,7 @@ export default function Basket(props: BasketProps) {
       onDeleteAll();
 
       setOrderBuilder(new Date());
-      history.push("/orders");
+      navigate("/orders");
 
     } catch (err) {
       console.log(err);

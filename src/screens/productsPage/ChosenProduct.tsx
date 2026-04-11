@@ -23,6 +23,7 @@ import { useEffect } from "react";
 import ProductService from "../../app/services/ProductService";
 import { serverApi } from "../../lib/config";
 import MemberService from "../../app/services/MemberService";
+import { CartItem } from "../../lib/types/search";
 
 /** Redux slice & selector */
 const actionDispatch = (dispatch: Dispatch) => ({
@@ -39,7 +40,13 @@ const storeRetriever = createSelector(
   (store) => ({ store })
 );
 
-export default function ChosenProduct() {
+interface ChosenProductProps {
+  onAdd: (item: CartItem) => void;
+}
+
+
+export default function ChosenProduct(props: ChosenProductProps) {
+  const { onAdd } = props;
   const { productId } = useParams<{ productId: string }>();
   const { setStore, setChosenProduct } = actionDispatch(useDispatch());
   const { chosenProduct } = useSelector(chosenProductRetriever);
@@ -56,6 +63,10 @@ export default function ChosenProduct() {
       .catch((err) => console.log(err));
   }, []);
 
+  if (!chosenProduct || !chosenProduct._id) {
+    console.error("Product not available");
+    return;
+  }
   return (
     <div className={"chosen-product"}>
       <Box className={"title"}>SOFA DETAIL</Box>
@@ -100,7 +111,19 @@ export default function ChosenProduct() {
               <span>${chosenProduct?.productPrice}</span>
             </div>
             <div className={"button-box"}>
-              <Button startIcon={<ShoppingCartIcon />} variant="contained" color="secondary">Add To Basket</Button>
+              <Button startIcon={<ShoppingCartIcon />} 
+              variant="contained" color="secondary"
+                onClick={(e) => {
+                  onAdd({
+                    _id: chosenProduct._id,
+                    quantity: 1,
+                    name: chosenProduct.productName,
+                    price: chosenProduct.productPrice,
+                    image: chosenProduct.productImages[0]
+                  });
+                  e.stopPropagation();
+                }}
+              >Add To Basket</Button>
             </div>
           </Box>
         </Stack>

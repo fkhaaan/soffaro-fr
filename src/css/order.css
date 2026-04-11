@@ -28,6 +28,97 @@
     flex-direction: column;
 }
 
+.order-page .order-right .order-info-box {
+    width: 360px;
+    height: auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    border: 1.5px solid rgb(212, 175, 55);
+    border-radius: 16px;
+    margin-bottom: 25px;
+}
+
+.order-page .order-right .order-info-box .member-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.order-page .order-right .order-info-box .liner {
+    width: 100%;
+    border: 1px solid rgb(212, 175, 55);
+    margin-top: 40px;
+    margin-bottom: 8px;
+}
+
+.order-page .order-right .order-info-box .order-user-img {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.order-page .order-right .order-info-box .order-user-img .order-user-avatar {
+    width: 117px;
+    height: 112px;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    border-radius: 37px;
+}
+
+.order-page .order-right .order-info-box .order-user-icon-box {
+    position: absolute;
+    padding: 5px;
+    width: 30px;
+    height: 30px;
+    top: 81%;
+    right: 0;
+    display: flex;
+    background: rgba(0, 0, 0, 0.25);
+    border-radius: 37px;
+}
+
+.order-page .order-right .order-info-box .order-user-icon-box .order-user-prof-img {
+   filter: brightness(0) invert(1);
+}
+
+.order-page .order-right .order-info-box .order-user-name {
+    margin-top: 10px;
+    font-family: 'Commissioner';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 36px;
+    color: #08090d;
+}
+
+.order-page .order-right .order-info-box .order-user-prof {
+     margin-top: 10px;
+    font-family: 'Commissioner';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 36px;
+    color: #a1a1a1;
+}
+
+.order-page .order-right .order-info-box .order-user-address {
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.order-page .order-right .order-info-box .spec-address-txt {
+     margin-left:5px;
+    font-family: 'DM Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: #616164;
+}
+
 
 /*card*/
 .order-page .order-right .order-payment-box {

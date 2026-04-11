@@ -1,11 +1,9 @@
+
 import { useState } from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import Modal from "@material-ui/core/Modal";
-import Backdrop from "@material-ui/core/Backdrop";
-import Fade from "@material-ui/core/Fade";
-import { Fab, Stack, TextField } from "@mui/material";
+import { Box, Modal, Backdrop, Fade, Fab, Stack, TextField, useTheme } from "@mui/material";
 import styled from "styled-components";
 import LoginIcon from "@mui/icons-material/Login";
+import PersonAddIcon from "@mui/icons-material/PersonAdd";
 import { T } from "../../../lib/types/common";
 import { Messages } from "../../../lib/config";
 import { LoginInput, MemberInput } from "../../../lib/types/member";
@@ -13,28 +11,19 @@ import MemberService from "../../services/MemberService";
 import { sweetErrorHandling } from "../../../lib/sweetAlert";
 import { useGlobals } from "../../hooks/useGlobals";
 
-const useStyles = makeStyles((theme: { palette: { background: { paper: any; }; }; shadows: any[]; spacing: (arg0: number, arg1: number, arg2: number) => any; }) => ({
-  modal: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  paper: {
-    backgroundColor: theme.palette.background.paper,
-    border: "2px solid #000",
-    boxShadow: theme.shadows[5],
-    padding: theme.spacing(2, 2, 2),
-  },
-}));
+// ✅ GOLD COLOR THEME
+const GOLD_COLOR = "rgb(212, 175, 55)";
+const GOLD_DARK = "rgb(180, 145, 35)";
 
 const ModalImg = styled.img`
-  width: 62%;
+  width: 45%;
   height: 100%;
-  border-radius: 10px;
+  border-radius: 10px 0 0 10px;
   background: #000;
-  margin-top: 9px;
-  margin-left: 10px;
+  object-fit: cover;
 `;
+
+const ModalPaper = Box;
 
 interface AuthenticationModalProps {
   signupOpen: boolean;
@@ -45,88 +34,127 @@ interface AuthenticationModalProps {
 
 export default function AuthenticationModal(props: AuthenticationModalProps) {
   const { signupOpen, loginOpen, handleSignupClose, handleLoginClose } = props;
-  const classes = useStyles();
+  const theme = useTheme();
   const [memberNick, setMemberNick] = useState<string>("");
   const [memberPhone, setMemberPhone] = useState<string>("");
   const [memberPassword, setMemberPassword] = useState<string>("");
-  const {setAuthMember} = useGlobals();
+  const { setAuthMember } = useGlobals();
 
   /** HANDLERS **/
-const handleUsername = (e: T) => {
-setMemberNick(e.target.value);
-};
+  const handleUsername = (e: T) => {
+    setMemberNick(e.target.value);
+  };
 
-const handlePhone = (e: T) => {
-setMemberPhone(e.target.value);
-};
+  const handlePhone = (e: T) => {
+    setMemberPhone(e.target.value);
+  };
 
-const handlePassword = (e: T) => {
-setMemberPassword(e.target.value);
-};
+  const handlePassword = (e: T) => {
+    setMemberPassword(e.target.value);
+  };
 
-const handlePasswordKeyDown = (e: T ) => {
-  if(e.key === "Enter" && signupOpen) {
-    handleSignupRequest().then();
-  }else{
-    if(e.key === "Enter" && loginOpen) {
-     handleLoginRequest().then();
+  const handlePasswordKeyDown = (e: T) => {
+    if (e.key === "Enter" && signupOpen) {
+      handleSignupRequest().then();
+    } else if (e.key === "Enter" && loginOpen) {
+      handleLoginRequest().then();
     }
-  }
-}
+  };
 
-const handleSignupRequest =async () => {
-  try {
-    const isFulfill = memberNick !== "" && memberPhone !== "" && memberPassword !== "";
-    if(!isFulfill) throw new Error(Messages.error3);
+  const handleSignupRequest = async () => {
+    try {
+      const isFulfill =
+        memberNick !== "" && memberPhone !== "" && memberPassword !== "";
+      if (!isFulfill) throw new Error(Messages.error3);
 
-    const signupInput: MemberInput = {
-      memberNick: memberNick,
-      memberPhone: memberPhone,
-      memberPassword: memberPassword
-    };
+      const signupInput: MemberInput = {
+        memberNick: memberNick,
+        memberPhone: memberPhone,
+        memberPassword: memberPassword,
+      };
 
-    const member = new MemberService();
-    const result = await member.signup(signupInput);
+      const member = new MemberService();
+      const result = await member.signup(signupInput);
 
-    setAuthMember(result);
-    handleSignupClose();
-  } catch (err) {
-    console.log(err);
+      setAuthMember(result);
+      handleSignupClose();
+      setMemberNick("");
+      setMemberPhone("");
+      setMemberPassword("");
+    } catch (err) {
+      console.log(err);
+      handleSignupClose();
+      sweetErrorHandling(err).then();
+    }
+  };
 
-    handleSignupClose();
-    sweetErrorHandling(err).then();
-  }
-}
+  const handleLoginRequest = async () => {
+    try {
+      const isFulfill = memberNick !== "" && memberPassword !== "";
+      if (!isFulfill) throw new Error(Messages.error3);
 
-const handleLoginRequest =async () => {
-  try {
-    const isFulfill = memberNick !== "" && memberPassword !== "";
-    if(!isFulfill) throw new Error(Messages.error3);
+      const loginInput: LoginInput = {
+        memberNick: memberNick,
+        memberPassword: memberPassword,
+      };
 
-    const loginInput: LoginInput = {
-      memberNick: memberNick,
-      memberPassword: memberPassword
-    };
+      const member = new MemberService();
+      const result = await member.login(loginInput);
 
-    const member = new MemberService();
-    const result = await member.login(loginInput);
- 
-    setAuthMember(result); //authmember result malumot bilan set qilinyapti
-    handleLoginClose();
-  } catch (err) {
-    console.log(err);
+      setAuthMember(result);
+      handleLoginClose();
+      setMemberNick("");
+      setMemberPassword("");
+    } catch (err) {
+      console.log(err);
+      handleLoginClose();
+      sweetErrorHandling(err).then();
+    }
+  };
 
-    handleLoginClose();
-    sweetErrorHandling(err).then();
-  }
-}
+  // ✅ GOLD BORDER DESIGN WITH WHITE BACKGROUND
+  const modalPaperStyle = {
+    backgroundColor: "#FFFFFF",
+    border: `3px solid ${GOLD_COLOR}`,
+    boxShadow: theme.shadows[5],
+    padding: 0,
+    borderRadius: "10px",
+    overflow: "hidden",
+  };
+
+  // ✅ GOLD BORDER FOR TEXT INPUTS
+  const textFieldStyle = {
+    marginTop: "7px",
+    minWidth: "250px",
+    "& .MuiOutlinedInput-root": {
+      backgroundColor: "#FFFFFF",
+      "& fieldset": {
+        borderColor: GOLD_COLOR,
+        borderWidth: "2px",
+      },
+      
+      "&.Mui-focused fieldset": {
+        borderColor: GOLD_COLOR,
+        borderWidth: "2px",
+      },
+    },
+    "& .MuiInputBase-input": {
+      color: "#000",
+    },
+    "& .MuiInputLabel-root": {
+      color: GOLD_COLOR,
+      "&.Mui-focused": {
+        color: GOLD_COLOR,
+      },
+    },
+  };
 
   return (
     <div>
+      {/* Signup Modal */}
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
-        className={classes.modal}
         open={signupOpen}
         onClose={handleSignupClose}
         closeAfterTransition
@@ -134,55 +162,92 @@ const handleLoginRequest =async () => {
         BackdropProps={{
           timeout: 500,
         }}
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
       >
         <Fade in={signupOpen}>
-          <Stack
-            className={classes.paper}
-            direction={"row"}
-            sx={{ width: "800px" }}
+          <ModalPaper
+            component={Stack}
+            direction="row"
+            sx={{
+              ...modalPaperStyle,
+              width: "900px",
+              height: "500px",
+            }}
           >
-            <ModalImg src={"/img/auth.webp"} alt="camera" />
-            <Stack sx={{ marginLeft: "69px", alignItems: "center" }}>
-              <h2>Signup Form</h2>
+            {/* ✅ IMAGE ON LEFT SIDE */}
+            <ModalImg src={"/img/auth.webp"} alt="auth illustration" />
+
+            {/* ✅ FORM ON RIGHT SIDE */}
+            <Stack
+              sx={{
+                flex: 1,
+                padding: "40px",
+                alignItems: "center",
+                justifyContent: "center",
+                backgroundColor: "#FFFFFF",
+              }}
+            >
+              <h2 style={{ color: "#000000", marginBottom: "30px" }}>
+                Signup Form
+              </h2>
               <TextField
-                sx={{ marginTop: "7px" }}
-                id="outlined-basic"
-                label="username"
+                sx={{ ...textFieldStyle, marginTop: "0px", marginBottom: "20px" }}
+                id="signup-username"
+                label="Username"
                 variant="outlined"
+                value={memberNick}
                 onChange={handleUsername}
+                fullWidth
               />
               <TextField
-                sx={{ my: "17px" }}
-                id="outlined-basic"
-                label="phone number"
+                sx={{ ...textFieldStyle, marginBottom: "20px" }}
+                id="signup-phone"
+                label="Phone Number"
                 variant="outlined"
+                value={memberPhone}
                 onChange={handlePhone}
+                fullWidth
               />
               <TextField
-                id="outlined-basic"
-                label="password"
+                sx={{ ...textFieldStyle, marginBottom: "30px" }}
+                id="signup-password"
+                label="Password"
+                type="password"
                 variant="outlined"
+                value={memberPassword}
                 onChange={handlePassword}
                 onKeyDown={handlePasswordKeyDown}
+                fullWidth
               />
               <Fab
-                sx={{ marginTop: "30px", width: "120px" }}
+                sx={{
+                  width: "140px",
+                  backgroundColor: GOLD_COLOR,
+                  color: "#000000",
+                  fontWeight: "bold",
+                  "&:hover": {
+                    backgroundColor: GOLD_DARK,
+                  },
+                }}
                 variant="extended"
-                color="primary"
                 onClick={handleSignupRequest}
               >
-                <LoginIcon sx={{ mr: 1 }} />
+                <PersonAddIcon sx={{ mr: 1 }} />
                 Signup
               </Fab>
             </Stack>
-          </Stack>
+          </ModalPaper>
         </Fade>
       </Modal>
 
+      {/* Login Modal */}
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
-        className={classes.modal}
         open={loginOpen}
         onClose={handleLoginClose}
         closeAfterTransition
@@ -190,48 +255,76 @@ const handleLoginRequest =async () => {
         BackdropProps={{
           timeout: 500,
         }}
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
       >
         <Fade in={loginOpen}>
-          <Stack
-            className={classes.paper}
-            direction={"row"}
-            sx={{ width: "700px" }}
+          <ModalPaper
+            component={Stack}
+            direction="row"
+            sx={{
+              ...modalPaperStyle,
+              width: "900px",
+              height: "500px",
+            }}
           >
-            <ModalImg src={"/img/auth.webp"} alt="camera" />
+            {/* ✅ IMAGE ON LEFT SIDE */}
+            <ModalImg src={"/img/auth.webp"} alt="auth illustration" />
+
+            {/* ✅ FORM ON RIGHT SIDE */}
             <Stack
               sx={{
-                marginLeft: "65px",
-                marginTop: "25px",
+                flex: 1,
+                padding: "40px",
                 alignItems: "center",
+                justifyContent: "center",
+                backgroundColor: "#FFFFFF",
               }}
             >
-              <h2>Login Form</h2>
+              <h2 style={{ color: "#000000", marginBottom: "30px" }}>
+                Login Form
+              </h2>
               <TextField
-                id="outlined-basic"
-                label="username"
+                id="login-username"
+                label="Username"
                 variant="outlined"
-                sx={{ my: "10px" }}
+                sx={{ ...textFieldStyle, marginTop: "0px", marginBottom: "20px" }}
+                value={memberNick}
                 onChange={handleUsername}
+                fullWidth
               />
               <TextField
-                id={"outlined-basic"}
-                label={"password"}
-                variant={"outlined"}
-                type={"password"}
+                id="login-password"
+                label="Password"
+                variant="outlined"
+                type="password"
+                sx={{ ...textFieldStyle, marginBottom: "30px" }}
+                value={memberPassword}
                 onChange={handlePassword}
                 onKeyDown={handlePasswordKeyDown}
+                fullWidth
               />
               <Fab
-                sx={{ marginTop: "27px", width: "120px" }}
-                variant={"extended"}
-                color={"primary"}
+                sx={{
+                  width: "140px",
+                  backgroundColor: GOLD_COLOR,
+                  color: "#000000",
+                  fontWeight: "bold",
+                  "&:hover": {
+                    backgroundColor: GOLD_DARK,
+                  },
+                }}
+                variant="extended"
                 onClick={handleLoginRequest}
               >
                 <LoginIcon sx={{ mr: 1 }} />
                 Login
               </Fab>
             </Stack>
-          </Stack>
+          </ModalPaper>
         </Fade>
       </Modal>
     </div>
