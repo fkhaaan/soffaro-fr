@@ -22,8 +22,8 @@ export default function Footer() {
 
   return (
     <Footers>
-      <Container >
-        <Stack flexDirection={'row'} sx={{ mt: '94px' }}>
+      <Container className="footer-frame">
+        <Stack className="footer-frame" flexDirection={'row'} sx={{ mt: '94px' }}>
           <Stack flexDirection={'column'} style={{ width: '340px' }}>
     
             <Box className={'foot-desc-txt'}>

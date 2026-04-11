@@ -6,15 +6,21 @@ import CardCover from '@mui/joy/CardCover';
 import CardContent from '@mui/joy/CardContent';
 import Typography from '@mui/joy/Typography';
 import VisibilityIcon from "@mui/icons-material/Visibility";
+import { createSelector } from "@reduxjs/toolkit";
+import { retrievePopularSofas } from "./selector";
+import { useSelector } from "react-redux";
+import { Product } from "../../lib/types/product";
+import { serverApi } from "../../lib/config";
 
-const list = [
-    
-     {productName: "Future", imagePath: "/img/soffa.png"},
-    {productName: "Green", imagePath: "/img/threegreen.png"},
-    {productName: "Green", imagePath: "/img/threeyellow.png"},
-];
+/** REDUX SLICE & SELECTOR */
+const popularSofasRetriever = createSelector(
+    retrievePopularSofas,
+    (popularSofas) => ({ popularSofas })
+);
 
 export default function PopularSofas() {
+    const {popularSofas} = useSelector(popularSofasRetriever);
+
     return (
     <div className="popular-sofas-frame">
         <Container>
@@ -22,13 +28,14 @@ export default function PopularSofas() {
                 <Box className="category-title">POPULAR SOFAS</Box>
 
                 <Stack className="cards-frame">
-                    {list.length !== 0 ? (
-                        list.map((ele, index) => {
+                    {popularSofas.length !== 0 ? (
+                        popularSofas.map((product: Product) => {
+                            const imagePath = `${serverApi}/${product.productImages[0]}`;
                     return (
-                     <CssVarsProvider key={index}>
+                     <CssVarsProvider key={product._id}>
                         <Card className="card">
                             <CardCover>
-                                <img src={ele.imagePath} alt="" />
+                                <img src={imagePath} alt="" />
                             </CardCover>
                             <CardCover className="card-cover"/>
                             <CardContent className="card-content" sx={{justifyContent: "flex-end"}}>
@@ -41,7 +48,7 @@ export default function PopularSofas() {
                                     fontSize="lg"
                                     textColor="#ffffff"
                                      >
-                                        {ele.productName}
+                                        {product.productName}
                                     </Typography>
                                     <Typography
                                     sx={{
@@ -51,7 +58,7 @@ export default function PopularSofas() {
                                         display: "flex"
                                     }}
                                     >
-                                        20
+                                        {product.productViews}
                                      <VisibilityIcon 
                                      sx={{ fontSize: 23, marginLeft: "5px", color: "white"}}
                                      />

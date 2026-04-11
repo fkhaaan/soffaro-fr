@@ -3,6 +3,7 @@
     height: auto;
     background: #f8f8ff;
     display: flex;
+    min-width: 1300px;
 }
 
 .order-page .order-container {

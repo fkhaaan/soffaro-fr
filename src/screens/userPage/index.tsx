@@ -6,8 +6,13 @@ import YouTubeIcon from "@mui/icons-material/YouTube";
 import LocationPinIcon from '@mui/icons-material/LocationOn';
 import { Settings } from "./Settings";
 import "../../css/userPage.css";
+import { Navigate } from "react-router-dom";
+import { useGlobals } from "../../app/hooks/useGlobals";
+import { serverApi } from "../../lib/config";
 
 export default function UserPage() {
+  const { authMember } = useGlobals();
+   if (!authMember) return <Navigate to="/" />;
   return (
     <div className={"user-page"}>
       <Container>
@@ -30,15 +35,19 @@ export default function UserPage() {
               >
                 <div className={"order-user-img"}>
                   <img
-                    src={"/icons/default-user.webp"}
+                    src={authMember?.memberImage
+                      ? `${serverApi}/${authMember.memberImage}`
+                      : "/icons/default-user.webp"}
                     className={"order-user-avatar"}
                   />
                 </div>
-                <span className={"order-user-name"}>KHAN</span>
-                <span className={"order-user-prof"}>User</span>
+                <span className={"order-user-name"}>{authMember?.memberNick}</span>
+                <span className={"order-user-prof"}>{authMember?.memberType}</span>
                 <span className={"order-user-prof2"}>
                   <LocationPinIcon fontSize="small"/>
-                  Busan, South Korea
+                  {authMember?.memberAddress
+                    ? authMember.memberAddress
+                    : "no address"}
                   </span>
               </Box>
               <Box className={"user-media-box"}>
@@ -47,7 +56,10 @@ export default function UserPage() {
                 <TelegramIcon sx={{color: "rgb(212, 175, 55)"}}/>
                 <YouTubeIcon sx={{color: "rgb(212, 175, 55)"}}/>
               </Box>
-              <p className={"user-desc"}>No description</p>
+              <p className={"user-desc"}>{"user-desc"}
+                {authMember?.memberDesc
+                  ? authMember.memberDesc
+                  : "no description"}</p>
             </Box>
           </Stack>
         </Stack>

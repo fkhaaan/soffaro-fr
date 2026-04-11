@@ -3,6 +3,7 @@
   height: 1000px;
   display: flex;
   background: #f8f8ff;
+  min-width: 1300px;
 }
 
 .help-page .help-container {

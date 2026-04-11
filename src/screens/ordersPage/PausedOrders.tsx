@@ -2,74 +2,153 @@
 import { Box, Stack} from "@mui/material";
 import Button from "@mui/material/Button";
 import TabPanel from "@mui/lab/TabPanel";
+import { createSelector } from "@reduxjs/toolkit";
+import { retrievePausedOrders } from "./selector";
+import { useSelector } from "react-redux";
+import { Order, OrderItem, OrderUpdateInput } from "../../lib/types/order";
+import { Product } from "../../lib/types/product";
+import { Messages, serverApi } from "../../lib/config";
+import { sweetErrorHandling } from "../../lib/sweetAlert";
+import OrderService from "../../app/services/OrderService";
+import { OrderStatus } from "../../lib/enums/order.enum";
+import { useGlobals } from "../../app/hooks/useGlobals";
+import { T } from "../../lib/types/common";
 
+/** REDUX SELECTOR */
+const pausedOrdersRetriever = createSelector(
+  retrievePausedOrders,
+  (pausedOrders) => ({ pausedOrders })
+);
 
-export default function PausedOrders() {
+interface PausedOrdersProps {
+  setValue: (input: string) => void;
+}
+
+export default function PausedOrders(props: PausedOrdersProps) {
+  const { setValue } = props;
+  const { authMember, setOrderBuilder } = useGlobals();
+  const { pausedOrders } = useSelector(pausedOrdersRetriever);
+
+  /** HANDLErs**/
+
+  const deleteOrderHandler = async (e: T) => {
+    try {
+      if (!authMember) throw new Error(Messages.error2);
+      const orderId = e.target.value;
+      const input: OrderUpdateInput = {
+        orderId: orderId,
+        orderStatus: OrderStatus.DELETE
+      };
+
+      const confirmation = window.confirm("Do you want to delete the order?");
+      if (confirmation) {
+        const order = new OrderService();
+        await order.updateOrder(input);
+        setOrderBuilder(new Date());
+      }
+    } catch (err) {
+      console.log(err);
+      sweetErrorHandling(err).then();
+    }
+  }
+
+  const processOrderHandler = async (e: T) => {
+    try {
+      if (!authMember) throw new Error(Messages.error2);
+      //PAYMENT PROCESS
+      const orderId = e.target.value;
+      const input: OrderUpdateInput = {
+        orderId: orderId,
+        orderStatus: OrderStatus.PROCESS
+      };
+
+      const confirmation = window.confirm("Do you want to proceed with payment?");
+      if (confirmation) {
+        const order = new OrderService();
+        await order.updateOrder(input);
+        setValue("2");
+        setOrderBuilder(new Date());
+      }
+    } catch (err) {
+      console.log(err);
+      sweetErrorHandling(err).then();
+    }
+  }
   return (
     <TabPanel value={"1"}>
-        <Stack>
-            {[1, 2].map((_ele, index) => {
-                return (
-                    <Box key={index} className="order-main-box">
-                        <Box className="order-box-scroll">
-                            {[1,2,3].map((_ele2, index2) => {
-                                return (
-                                    <Box key={index2} className="order-name-price">
-                                        <img 
-                                        src="/img/lavash.webp" alt=""
-                                        className="order-sofa-img"
-                                        />
-                                        <p className="title-sofa">Green Sofa</p>
-                                        <Box className="price-box">
-                                            <p>$244</p>
-                                            <img src="/icons/close.svg" alt=""/>
-                                             <img src="/icons/pause.svg" alt=""/>
-                                             <p style={{marginLeft: "15"}}>$244</p>
-                                        </Box>
-                                    </Box>
-                                );
-                            })}
-                        </Box>
-                              <Box className="total-price-box">
-                            <Box className="box-total">
-                                <p>Product price</p>
-                                <p>$244</p>
-                                <img src="/icons/plus.svg" style={{marginLeft: "20px"}} alt=""/>
-                                <p>delivery cost</p>
-                                <p>$30</p>
-                                <img src="/icons/pause.svg" style={{marginLeft: "20px"}} alt=""/>
-                                <p>Total</p>
-                                <p>$274</p>
-                            </Box>
-                          </Box>
-                          <Box className="box-btn" >
-                            <Button 
-                            variant="contained" 
-                            className="cancel-button"
-                            >
-                            Cancel
-                            </Button>
-                              <Button variant="contained" className="pay-button">
-                              Payment
-                            </Button>
-                          </Box>
-                           
+      <Stack>
+        {pausedOrders.map((order: Order) => {
+          return (
+            <Box key={order._id} className="order-main-box">
+              <Box className="order-box-scroll">
+                {order?.orderItems.map((item: OrderItem) => {
+                  const product: Product = order.productData.filter(
+                    (ele: Product) => item.productId === ele._id
+                  )[0];
+                  const imagePath = `${serverApi}/${product.productImages[0]}`;
+                  return (
+                    <Box key={item._id} className="order-name-price">
+                      <img
+                        src={imagePath} alt=""
+                        className="order-dish-img"
+                      />
+                      <p className="title-dish">{product.productName}</p>
+                      <Box className="price-box">
+                        <p>${item.itemPrice}</p>
+                        <img src="/icons/close.svg" alt="" />
+                        <p>{item.itemQuantity}</p>
+                        <img src="/icons/pause.svg" alt="" />
+                        <p style={{ marginLeft: "15" }}>${item.itemQuantity * item.itemPrice}</p>
+                      </Box>
                     </Box>
-                );
-            })}
-
-             {false && (
-                <Box 
-                 display={"flex"}
-                 flexDirection={"row"}
-                 justifyContent={"center"}
-                 >
-                 <img src="/icons/noimage-list.svg"
-                 style={{width:300, height:300}}
-                 alt=""/>
+                  );
+                })}
+              </Box>
+              <Box className="total-price-box">
+                <Box className="box-total">
+                  <p>Product price</p>
+                  <p>${order.orderTotal - order.orderDelivery}</p>
+                  <img src="/icons/plus.svg" style={{ marginLeft: "20px" }} alt="" />
+                  <p>delivery cost</p>
+                  <p>${order.orderDelivery}</p>
+                  <img src="/icons/pause.svg" style={{ marginLeft: "20px" }} alt="" />
+                  <p>Total</p>
+                  <p>${order.orderTotal}</p>
                 </Box>
-             )}
-        </Stack>
+                <Button
+                  value={order._id}
+                  variant="contained"
+                  className="verify-button"
+                  color="secondary"
+                  onClick={deleteOrderHandler}
+                >
+                  Cancel
+                </Button>
+                <Button
+                  value={order._id}
+                  variant="contained"
+                  className="pay-button"
+                  onClick={processOrderHandler}>
+                  Payment
+                </Button>
+              </Box>
+            </Box>
+          );
+        })}
+
+        {!pausedOrders ||
+          (pausedOrders.length === 0 && (
+            <Box
+              display={"flex"}
+              flexDirection={"row"}
+              justifyContent={"center"}
+            >
+              <img src="/icons/noimage-list.svg"
+                style={{ width: 300, height: 300 }}
+                alt="" />
+            </Box>
+          ))}
+      </Stack>
     </TabPanel>
   );
 }

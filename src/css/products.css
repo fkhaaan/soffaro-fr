@@ -13,6 +13,7 @@
   width: 100%;
   height: auto;
   background: #f8f8ff;
+  min-width: 1300px;
 }
 
 .products-page .products .avatar-big-box {

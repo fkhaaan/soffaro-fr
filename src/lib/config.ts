@@ -1,0 +1,11 @@
+export const serverApi = import.meta.env.VITE_API_URL;
+
+export const Messages = {
+    error1: "Something went wrong!",
+    error2: "Please login first!",
+    error3: "Please fulfill all inputs!",
+    error4: "Message is empty!",
+    error5: "Only images with jpeg, jpg, png format allowed!"
+};
+
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImNvbmZpZy50cyJdLCJzb3VyY2VzQ29udGVudCI6WyJleHBvcnQgY29uc3Qgc2VydmVyQXBpOiBzdHJpbmcgPSBgJHtwcm9jZXNzLmVudi5WSVRFX0FQSV9VUkx9YDtcblxuZXhwb3J0IGNvbnN0IE1lc3NhZ2VzID0ge1xuICAgIGVycm9yMTogXCJTb21ldGhpbmcgd2VudCB3cm9uZyFcIixcbiAgICBlcnJvcjI6IFwiUGxlYXNlIGxvZ2luIGZpcnN0IVwiLFxuICAgIGVycm9yMzogXCJQbGVhc2UgZnVsZmlsbCBhbGwgaW5wdXRzIVwiLFxuICAgIGVycm9yNDogXCJNZXNzYWdlIGlzIGVtcHR5IVwiLFxuICAgIGVycm9yNTogXCJPbmx5IGltYWdlcyB3aXRoIGpwZWcsIGpwZywgcG5nIGZvcm1hdCBhbGxvd2VkIVwiXG59OyJdLCJtYXBwaW5ncyI6IkFBQU8sYUFBTSxZQUFvQixHQUFHLFFBQVEsSUFBSSxZQUFZO0FBRXJELGFBQU0sV0FBVztBQUFBLEVBQ3BCLFFBQVE7QUFBQSxFQUNSLFFBQVE7QUFBQSxFQUNSLFFBQVE7QUFBQSxFQUNSLFFBQVE7QUFBQSxFQUNSLFFBQVE7QUFDWjsiLCJuYW1lcyI6W119

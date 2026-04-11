@@ -7,6 +7,9 @@ import CssBaseline from "@mui/material/CssBaseline";
 import theme from "./app/MaterialTheme";
 
 import "./css/index.css";
+import { Provider } from "react-redux";
+import { store } from "./app/store";
+import ContextProvider from "./app/context/ContextProvider";
 
 const container = document.getElementById("root")
 
@@ -15,14 +18,16 @@ if (container) {
 
   root.render(
     <StrictMode>
-     
+      <Provider store={store}>
+        <ContextProvider>
         <ThemeProvider theme={theme}>
           <CssBaseline />
           <BrowserRouter>
             <App />
           </BrowserRouter>
         </ThemeProvider>
-     
+        </ContextProvider>
+      </Provider>
     </StrictMode>
   )
 } else {

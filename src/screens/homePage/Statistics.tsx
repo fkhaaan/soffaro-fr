@@ -1,6 +1,6 @@
 
 import { Box, Container, Stack } from "@mui/material";
-import Divider from "../../components/divider";
+import Divider from "../../app/components/divider";
 
 export default function Statistics() {
     return (
