@@ -63,10 +63,7 @@ export default function ChosenProduct(props: ChosenProductProps) {
       .catch((err) => console.log(err));
   }, []);
 
-  if (!chosenProduct || !chosenProduct._id) {
-    console.error("Product not available");
-    return;
-  }
+  if (!chosenProduct || !chosenProduct._id) return null;
   return (
     <div className={"chosen-product"}>
       <Box className={"title"}>SOFA DETAIL</Box>

@@ -298,15 +298,8 @@
     overflow: hidden;
 }
 
-.order-page .order-main-content .order-main-box .box-btn {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
-  margin-bottom: 15px;
-}
 
-.order-page .order-main-content .order-main-box .box-btn .cancel-button {
+.order-page .order-main-content .order-main-box  .cancel-button {
       background: white;
     color: rgb(212, 175, 55);
     max-height: 40px;
@@ -315,13 +308,13 @@
   transition: 0.25s;
 }
 
-.order-page .order-main-content .order-main-box .box-btn .cancel-button:hover {
+.order-page .order-main-content .order-main-box  .cancel-button:hover {
     border-color: #000000;
   color: rgb(85, 85, 85);
 }
    
 
-.order-page .order-main-content .order-main-box .box-btn .pay-button {
+.order-page .order-main-content .order-main-box  .pay-button {
     background: white;
     color: rgb(212, 175, 55);
     max-height: 40px;
@@ -330,7 +323,7 @@
   transition: 0.25s;
 }
 
-.order-page .order-main-content .order-main-box .box-btn .pay-button:hover {
+.order-page .order-main-content .order-main-box  .pay-button:hover {
     border-color: #000000;
   color: rgb(85, 85, 85);
 }

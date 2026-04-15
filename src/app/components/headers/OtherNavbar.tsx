@@ -29,7 +29,6 @@ export default function OtherNavbar(props: OtherNavbarProps) {
         onDelete,
         onDeleteAll,
         onRemove,
-        setSignupOpen,
         setLoginOpen,
         handleLogoutClick,
         handleCloseLogout,
@@ -92,6 +91,7 @@ export default function OtherNavbar(props: OtherNavbarProps) {
                                 ? `${serverApi}/${authMember?.memberImage}`
                                 : "/icons/default-user.webp"}
                     aria-haspopup={"true"}
+                            onClick={handleLogoutClick}
                  />)}
 
                     <Menu

@@ -98,7 +98,7 @@ export default function OrdersPage() {
                 <img
                   src={authMember?.memberImage
                     ? `${serverApi}/${authMember.memberImage}`
-                    : "/icons/default-user.svg"} alt=""
+                    : "/icons/default-user.webp"} alt=""
                   className="order-user-avatar" />
                 <div className="order-user-icon-box">
                   <img

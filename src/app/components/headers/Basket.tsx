@@ -29,7 +29,7 @@ export default function Basket(props: BasketProps) {
   const navigate = useNavigate();
   const itemsPrice = cartItems.reduce(
     (a: number, c: CartItem) => a + c.quantity * c.price, 0);
-  const shippingCost = itemsPrice < 100 ? 5 : 0;
+  const shippingCost = itemsPrice < 1000 ? 50 : 0;
   const totalPrice = (itemsPrice + shippingCost).toFixed(1);
 
 
@@ -162,10 +162,12 @@ export default function Basket(props: BasketProps) {
           {cartItems.length !== 0 ? (
             <Box className={"basket-order"}>
               <span className={"price"}>Total: ${totalPrice} ({itemsPrice} + {shippingCost})</span>
-              <Button
+              <Button 
                 onClick={proceedOrderHandler}
                 startIcon={<ShoppingCartIcon />}
-                variant={"contained"}>
+                variant={"contained"}
+                color="secondary"
+                >
                 Order
               </Button>
             </Box>
