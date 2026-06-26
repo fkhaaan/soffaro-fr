@@ -10,6 +10,7 @@ import "./css/index.css";
 import { Provider } from "react-redux";
 import { store } from "./app/store";
 import ContextProvider from "./app/context/ContextProvider";
+import { SocketProvider } from "./app/context/SocketContext";
 
 const container = document.getElementById("root")
 
@@ -20,12 +21,14 @@ if (container) {
     <StrictMode>
       <Provider store={store}>
         <ContextProvider>
+          <SocketProvider>
         <ThemeProvider theme={theme}>
           <CssBaseline />
           <BrowserRouter>
             <App />
           </BrowserRouter>
         </ThemeProvider>
+          </SocketProvider>
         </ContextProvider>
       </Provider>
     </StrictMode>
