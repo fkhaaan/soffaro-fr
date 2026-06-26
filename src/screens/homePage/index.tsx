@@ -9,6 +9,7 @@ import { Dispatch } from "@reduxjs/toolkit";
 import { setNewSofas, setPopularSofas, setTopUsers } from "./slice";
 import { Product } from "../../lib/types/product";
 import { Member } from "../../lib/types/member";
+import { CartItem } from "../../lib/types/search";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import ProductService from "../../app/services/ProductService";
@@ -21,7 +22,12 @@ const actionDispatch = (dispatch: Dispatch) => ({
   setTopUsers: (data: Member[]) => dispatch(setTopUsers(data)),
 });
 
-export default function HomePage() {
+interface HomePageProps {
+  onAdd: (item: CartItem) => void;
+}
+
+export default function HomePage(props: HomePageProps) {
+  const { onAdd } = props;
 
   const {setPopularSofas, setNewSofas, setTopUsers} = actionDispatch(useDispatch());
 
@@ -57,7 +63,7 @@ export default function HomePage() {
 
 return <div className="homepage">
   <Statistics/>
-  <NewSofas/>
+  <NewSofas onAdd={onAdd}/>
   <PopularSofas/>
   <Advertisement/>
   <ActiveUsers/>
