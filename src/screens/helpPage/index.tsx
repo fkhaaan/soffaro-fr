@@ -79,7 +79,7 @@ export default function HelpPage() {
                   <Stack>
 
                 <Grid flexDirection={"row"} container spacing={8}>
-               <Grid item xs={12} md={4}>
+               <Grid size={ {xs:12, md:4}}>
               <Box className="card-box">
                 <Box display={"flex"} flexDirection={"column"} justifyContent={"space-between"} alignItems={"center"}>
                   <LocalPhoneIcon/>
@@ -114,7 +114,7 @@ export default function HelpPage() {
                 </Box>
              </Grid>
 
-             <Grid item xs={12} md={4}>
+             <Grid size={{xs:12, md:4}}>
               <Box className="card-box">
                 <Box display={"flex"} flexDirection={"column"} justifyContent={"space-between"} alignItems={"center"}>
                   <EmailIcon/>
@@ -150,7 +150,7 @@ export default function HelpPage() {
               </Box>
              </Grid>
 
-           <Grid  item xs={12} md={4}>
+                      <Grid size={{ xs: 12, md: 4 }}>
          < Box className="card-box">
          <Box display={"flex"} flexDirection={"column"} justifyContent={"space-between"} alignItems={"center"}>
                   <LocationPinIcon/>

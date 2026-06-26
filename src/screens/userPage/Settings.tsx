@@ -1,10 +1,10 @@
 import { Box } from "@mui/material";
 import CloudDownloadIcon from "@mui/icons-material/CloudDownload";
 import Button from "@mui/material/Button";
+import type React from "react";
 import { useState } from "react";
 import { Messages, serverApi } from "../../lib/config";
 import { MemberUpdateInput } from "../../lib/types/member";
-import { T } from "vitest/dist/chunks/environment.d.cL3nLXbE.js";
 import { useGlobals } from "../../app/hooks/useGlobals";
 import MemberService from "../../app/services/MemberService";
 import { sweetTopSmallSuccessAlert, sweetErrorHandling } from "../../lib/sweetAlert";
@@ -26,21 +26,21 @@ export function Settings() {
     });
 
   /***HANDLERS */
-  const memberNickHandler = (e: T) => {
+  const memberNickHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     memberUpdateInput.memberNick = e.target.value;
     setMemberUpdateInput({ ...memberUpdateInput });
   };
 
-  const memberPhoneHandler = (e: T) => {
+  const memberPhoneHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     memberUpdateInput.memberPhone = e.target.value;
     setMemberUpdateInput({ ...memberUpdateInput });
   };
 
-  const memberAddressHandler = (e: T) => {
+  const memberAddressHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     memberUpdateInput.memberAddress = e.target.value;
     setMemberUpdateInput({ ...memberUpdateInput });
   };
-  const memberDescHandler = (e: T) => {
+  const memberDescHandler = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     memberUpdateInput.memberDesc = e.target.value;
     setMemberUpdateInput({ ...memberUpdateInput });
   };
@@ -68,8 +68,10 @@ export function Settings() {
     }
   }
 
-  const handleImageViewer = (e: T) => {
-    const file = e.target.files[0];
+  const handleImageViewer = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
     console.log("file:", file);
     const fileType = file.type,
       validateImageTypes = ["image/jpg", "image/jpeg", "image/png"];
@@ -94,9 +96,9 @@ export function Settings() {
           <span>Upload image</span>
           <p>JPG, JPEG, PNG formats only!</p>
           <div className={"up-del-box"}>
-            <Button component="label" onChange={handleImageViewer}>
+            <Button component="label">
               <CloudDownloadIcon />
-              <input type="file" hidden />
+              <input type="file" hidden onChange={handleImageViewer} />
             </Button>
           </div>
         </div>
