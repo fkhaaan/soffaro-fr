@@ -303,131 +303,353 @@ border-radius: 24px;
 
 .basket-frame {
   position: relative;
-  padding: 10px 4px 0px 4px;
-  width: 450px;
-  height: auto;
   display: flex;
   flex-direction: column;
-  background: oklab(97.33500000000001% 0.00027 0.00274);
+  width: min(420px, 92vw);
+  height: auto;
+  padding: 18px;
   border-radius: 16px;
+  background: #ffffff;
 }
+
+/* Header */
 
 .basket-frame .all-check-box {
-  padding: 0px 6px;
-  width: 100%;
-  height: 35px;
   display: flex;
   flex-direction: row;
   align-items: center;
-  background:#D4AF37;
-}
-
-
-.basket-frame .basket-info-box {
-  position: relative;
-  margin-top: 6px;
   width: 100%;
-  height: auto;
-  display: flex;
-  flex-direction: row;
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgba(17, 17, 17, 0.08);
+}
+
+.basket-frame .basket-head-row {
+  justify-content: space-between;
   align-items: center;
+  width: 100%;
 }
 
-.basket-info-box .product-img {
-  width: 60px;
-  height: 60px;
-  filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.25));
-  border-radius: 29px;
+.basket-frame .basket-title-box {
+  align-items: center;
+  gap: 10px;
 }
 
-.basket-info-box .product-name {
-  margin-left: 11px;
-  width: 185px;
-   font-family:"Inter", "Roboto", "Helvetica", "Arial", sans-serif;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 20px;
-  line-height: 30px;
-  color: #000000;
+.basket-frame .basket-title {
+  font-family: "Inter", "Roboto", "Helvetica", "Arial", sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+  color: rgb(17, 17, 17);
 }
 
-.basket-info-box .product-price {
-  width: 80px;
-   font-family:"Inter", "Roboto", "Helvetica", "Arial", sans-serif;
-  font-style: normal;
+.basket-frame .basket-count {
+  display: flex;
+  align-items: center;
+  height: 22px;
+  padding: 0 10px;
+  border-radius: 25px;
+  font-family: "Inter", "Roboto", "Helvetica", "Arial", sans-serif;
+  font-size: 11.5px;
   font-weight: 600;
-  font-size: 15px;
-  line-height: 22px;
-  color: hwb(247 4% 64%);
+  color: #111111;
+  background: rgba(212, 175, 55, 0.22);
 }
 
-.basket-info-box
-  .css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input {
-  padding: 6.5px 14px;
+.basket-frame .clear-all-icon {
+  font-size: 22px;
+  color: rgba(17, 17, 17, 0.35);
+  transition: color 0.25s ease, transform 0.25s ease;
 }
 
-.basket-info-box .css-ece9u5 {
-  min-width: 72px;
+.basket-frame .clear-all-icon:hover {
+  color: #c0392b;
+  transform: scale(1.1);
 }
 
-.basket-frame .cancel-btn {
-  position: absolute;
-  top: 33%;
-  right: 2%;
-  cursor: pointer;
-}
+/* Empty state */
 
-.basket-frame .basket-order {
-  margin-top: 10px;
-  width: 100%;
-  height: 64px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  align-items: center;
-  border-top: 1px solid rgba(0, 0, 0, 0.5);
-}
-
-.basket-order .price {
-  width: 200px;
-  display: flex;
-  font-family:"Inter", "Roboto", "Helvetica", "Arial", sans-serif;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 20px;
-  line-height: 30px;
-  color: #000000;
-}
-
-.basket-frame .orders-wrapper {
-  position: relative;
-  overflow: hidden;
-  width: 100%;
-  height: 100%;
+.basket-frame .basket-empty {
   display: flex;
   flex-direction: column;
-  overflow-y: scroll;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+  padding: 36px 16px 28px 16px;
 }
 
-.basket-frame .orders-wrapper::-webkit-scrollbar {
-  width: 10px;
+.basket-frame .basket-empty .empty-icon-circle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  margin-bottom: 8px;
+  background: rgba(212, 175, 55, 0.15);
 }
 
-.basket-frame .orders-wrapper::-webkit-scrollbar-thumb {
-  background-color: #888;
-  border-radius: 5px;
+.basket-frame .basket-empty .empty-icon {
+  font-size: 30px;
+  color: hsl(46, 64%, 42%);
 }
 
-.basket-frame .orders-wrapper::-webkit-scrollbar-track {
-  background: #f1f1f1;
+.basket-frame .basket-empty .empty-title {
+  font-family: "Inter", "Roboto", "Helvetica", "Arial", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: rgb(17, 17, 17);
 }
+
+.basket-frame .basket-empty .empty-desc {
+  font-family: "Inter", "Roboto", "Helvetica", "Arial", sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  text-align: center;
+  color: rgba(17, 17, 17, 0.45);
+}
+
+/* Items */
 
 .basket-frame .orders-main-wrapper {
   position: relative;
   overflow: hidden;
-  margin-top: 10px;
-  width: 100%;
-  height: 260px;
   display: flex;
   flex-direction: column;
+  width: 100%;
+  max-height: 300px;
+}
+
+.basket-frame .orders-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.basket-frame .orders-wrapper::-webkit-scrollbar {
+  width: 5px;
+}
+
+.basket-frame .orders-wrapper::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background-color: rgba(212, 175, 55, 0.6);
+}
+
+.basket-frame .orders-wrapper::-webkit-scrollbar-track {
+  background: rgba(17, 17, 17, 0.05);
+}
+
+.basket-frame .basket-info-box {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  height: auto;
+  padding: 12px 4px;
+  border-bottom: 1px solid rgba(17, 17, 17, 0.06);
+  transition: background 0.25s ease;
+}
+
+.basket-frame .basket-info-box:last-child {
+  border-bottom: none;
+}
+
+.basket-frame .basket-info-box:hover {
+  background: rgba(212, 175, 55, 0.06);
+  border-radius: 12px;
+}
+
+.basket-info-box .product-img {
+  flex-shrink: 0;
+  width: 62px;
+  height: 62px;
+  object-fit: cover;
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  border-radius: 12px;
+}
+
+.basket-info-box .item-details {
+  flex: 1;
+  min-width: 0;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 3px;
+}
+
+.basket-info-box .product-name {
+  overflow: hidden;
+  max-width: 100%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-family: "Inter", "Roboto", "Helvetica", "Arial", sans-serif;
+  font-size: 14.5px;
+  font-weight: 600;
+  line-height: 20px;
+  color: rgb(17, 17, 17);
+}
+
+.basket-info-box .product-price {
+  margin: 0;
+  font-family: "Inter", "Roboto", "Helvetica", "Arial", sans-serif;
+  font-size: 12.5px;
+  font-weight: 600;
+  line-height: 18px;
+  color: rgba(17, 17, 17, 0.5);
+}
+
+/* Quantity stepper */
+
+.basket-info-box .col-2 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 2px;
+  margin-top: 4px;
+  padding: 2px;
+  border: 1px solid rgba(17, 17, 17, 0.1);
+  border-radius: 20px;
+  background: #ffffff;
+}
+
+.basket-info-box .col-2 button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 24px;
+  height: 24px;
+  border: none;
+  border-radius: 50%;
+  font-family: "Inter", "Roboto", "Helvetica", "Arial", sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1;
+  color: rgb(17, 17, 17);
+  background: transparent;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.basket-info-box .col-2 button:hover {
+  color: #111111;
+  background: hsl(46, 64%, 47%);
+}
+
+.basket-info-box .col-2 .qty-value {
+  min-width: 22px;
+  font-family: "Inter", "Roboto", "Helvetica", "Arial", sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  text-align: center;
+  color: rgb(17, 17, 17);
+}
+
+/* Remove item */
+
+.basket-frame .cancel-btn {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.basket-frame .cancel-btn svg {
+  font-size: 20px;
+  color: rgba(17, 17, 17, 0.25);
+  transition: color 0.25s ease, transform 0.25s ease;
+}
+
+.basket-frame .cancel-btn svg:hover {
+  color: #c0392b;
+  transform: scale(1.1);
+}
+
+/* Order summary */
+
+.basket-frame .basket-order {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: auto;
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(17, 17, 17, 0.08);
+}
+
+.basket-order .summary-rows {
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+  margin-bottom: 14px;
+}
+
+.basket-order .summary-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  font-family: "Inter", "Roboto", "Helvetica", "Arial", sans-serif;
+  font-size: 13.5px;
+  font-weight: 500;
+  color: rgba(17, 17, 17, 0.6);
+}
+
+.basket-order .summary-row.total {
+  padding-top: 8px;
+  border-top: 1px dashed rgba(17, 17, 17, 0.12);
+  font-size: 15px;
+  font-weight: 700;
+  color: rgb(17, 17, 17);
+}
+
+.basket-order .price {
+  font-family: "Inter", "Roboto", "Helvetica", "Arial", sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: hsl(46, 64%, 40%);
+}
+
+/* Checkout button */
+
+.basket-order .order-btn {
+  width: 100%;
+  height: 44px;
+  border-radius: 12px;
+  font-family: "Inter", "Roboto", "Helvetica", "Arial", sans-serif;
+  font-size: 14.5px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  text-transform: none;
+  color: #111111;
+  background: linear-gradient(160deg, #eccf7f 0%, #d4af37 80%);
+  box-shadow: none;
+  transition: all 0.25s ease;
+}
+
+.basket-order .order-btn:hover {
+  background: hsl(46, 64%, 42%);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(212, 175, 55, 0.4);
+}
+
+/* Basket — small screens */
+
+@media (max-width: 480px) {
+  .basket-frame {
+    padding: 14px;
+  }
+
+  .basket-info-box .product-img {
+    width: 54px;
+    height: 54px;
+  }
+
+  .basket-info-box .product-name {
+    font-size: 13.5px;
+  }
 }

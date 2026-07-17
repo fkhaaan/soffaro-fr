@@ -67,22 +67,23 @@ export default function OrdersPage() {
   if (!authMember) return <Navigate to="/" />;
   return (
     <div className="order-page">
+      <Box className="order-header">
+        <Box className="order-page-title">MY ORDERS</Box>
+      </Box>
       <Container className="order-container">
         <Stack className="order-left">
           <TabContext value={value}>
             <Box className="order-nav-frame">
-              <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
-                <Tabs
-                  value={value}
-                  onChange={handleChange}
-                  aria-label="basic tabs example"
-                  className="table-list"
-                >
-                  <Tab label="PAUSED ORDERS" value={"1"} sx={{ color: "#dab440", fontWeight: 600 }} />
-                  <Tab label="PROCESS ORDERS" value={"2"} sx={{ color: "#dab440", fontWeight: 600 }} />
-                  <Tab label="FINISHED ORDERS" value={"3"} sx={{ color: "#dab440", fontWeight: 600 }}  />
-                </Tabs>
-              </Box>
+              <Tabs
+                value={value}
+                onChange={handleChange}
+                aria-label="basic tabs example"
+                className="table-list"
+              >
+                <Tab label="PAUSED ORDERS" value={"1"} />
+                <Tab label="PROCESS ORDERS" value={"2"} />
+                <Tab label="FINISHED ORDERS" value={"3"} />
+              </Tabs>
             </Box>
             <Stack className="order-main-content">
               <PausedOrders setValue={setValue} />

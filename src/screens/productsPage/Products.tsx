@@ -2,7 +2,6 @@
 import { Box, Button, Stack, Container } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
-import Badge from "@mui/material/Badge";
 import Pagination from "@mui/material/Pagination";
 import PaginationItem from "@mui/material/PaginationItem";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
@@ -91,15 +90,20 @@ export default function Products(props: ProductsProps) {
     const chooseDishHandler = (id: string) => {
         navigate(`/products/${id}`);
     };
-    
+
     return (
         <div className="products">
-            <Container sx={{mt: "30px"}}>
-                <Stack flexDirection={"column"} alignItems={"center"}>
+            <Container>
+                <Stack className="products-inner">
+
+                    <Stack className="products-header">
+                        <Box className="page-title">SOFA COLLECTION</Box>
+                    </Stack>
+
                     <Stack className="avatar-big-box">
                         <div className="single-search-big-box">
                               <SearchIcon className="search-icon"/>
-                            <input type="search" 
+                            <input type="search"
                             className="single-search-input"
                             name="singleResearch"
                             placeholder="Search sofas..."
@@ -110,42 +114,39 @@ export default function Products(props: ProductsProps) {
                                 }}
                             />
                         </div>
-                       
+
                         <Stack className="filter-box">
                             <div className="category-box">
-                                <Button 
-                                variant="contained" 
-                                    sx={{
-                                        backgroundColor:
-                                            productSearch.order === "createdAt"
-                                                ? "#D4AF37 !important"
-                                                : "transparent"
-                                    }}
+                                <Button
+                                disableRipple
+                                className={
+                                    productSearch.order === "createdAt"
+                                        ? "sort-chip active"
+                                        : "sort-chip"
+                                }
                                 onClick={() => searchOrderHandler("createdAt")}
                                 >
                                    new
                                     </Button>
-    
-                                <Button 
-                                variant="contained" 
-                                    sx={{
-                                        backgroundColor:
-                                            productSearch.order === "productViews"
-                                                ? "#D4AF37 !important"
-                                                : "transparent"
-                                    }}
+
+                                <Button
+                                disableRipple
+                                className={
+                                    productSearch.order === "productViews"
+                                        ? "sort-chip active"
+                                        : "sort-chip"
+                                }
                                 onClick={() => searchOrderHandler("productViews")}
                                 >
                                     best
                                     </Button>
-                                <Button 
-                                variant="contained"
-                                    sx={{
-                                        backgroundColor:
-                                            productSearch.order === "productPrice"
-                                                ? "#D4AF37 !important"
-                                                : "transparent"}}
-
+                                <Button
+                                disableRipple
+                                className={
+                                    productSearch.order === "productPrice"
+                                        ? "sort-chip active"
+                                        : "sort-chip"
+                                }
                                 onClick={() => searchOrderHandler("productPrice")}
                                 >
                                    price
@@ -153,98 +154,86 @@ export default function Products(props: ProductsProps) {
                             </div>
                         </Stack>
                          </Stack>
-                       
-                         <Stack className="category-main"direction={"row"} spacing={1} justifyContent={"space-between"}>
-                            
-                            
-                                <Button 
-                                  variant="contained"
-                               sx={{
-                                backgroundColor:
+
+                         <Stack className="category-main" direction={"row"}>
+                                <Button
+                                disableRipple
+                                className={
                                     productSearch.productCollection === ProductCollection.LUXURY
-                                        ? "#D4AF37 !important"   // gold
-                                        : "transparent",
-                              }}
+                                        ? "collection-chip active"
+                                        : "collection-chip"
+                                }
                                   onClick={() => searchCollectionHandler(ProductCollection.LUXURY)}
                                  >
                                     Luxury
                                     </Button>
-                                <Button 
-                                 variant="contained"
-                                sx={{
-                                backgroundColor:
+                                <Button
+                                disableRipple
+                                className={
                                     productSearch.productCollection === ProductCollection.MODERN
-                                        ? "#D4AF37 !important"  
-                                        : "transparent",
-                               }}
+                                        ? "collection-chip active"
+                                        : "collection-chip"
+                                }
                                 onClick={() => searchCollectionHandler(ProductCollection.MODERN)}
                                 >
                                     Modern
                                     </Button>
-                                <Button 
-                                  variant="contained"
-                                 sx={{
-                                 backgroundColor:
+                                <Button
+                                disableRipple
+                                className={
                                     productSearch.productCollection === ProductCollection.CLASSIC
-                                        ? "#D4AF37 !important"   
-                                        : "transparent",
-                               }}
+                                        ? "collection-chip active"
+                                        : "collection-chip"
+                                }
                                  onClick={() => searchCollectionHandler(ProductCollection.CLASSIC)}
                                 >
                                     Classic
                                     </Button>
-                                <Button 
-                                   variant="contained"
-                               sx={{
-                                backgroundColor:
+                                <Button
+                                disableRipple
+                                className={
                                     productSearch.productCollection === ProductCollection.RETRO
-                                        ? "#D4AF37 !important"  
-                                        : "transparent",
-                              }}
+                                        ? "collection-chip active"
+                                        : "collection-chip"
+                                }
                                    onClick={() => searchCollectionHandler(ProductCollection.RETRO)}
                                 >
                                     retro
                                     </Button>
                            <Button
-                            variant="contained"
-                            sx={{
-                                backgroundColor:
-                                    productSearch.productCollection === ProductCollection.FAMILY
-                                        ? "#D4AF37 !important"   
-                                        : "transparent",
-                            }}
+                            disableRipple
+                            className={
+                                productSearch.productCollection === ProductCollection.FAMILY
+                                    ? "collection-chip active"
+                                    : "collection-chip"
+                            }
                             onClick={() => searchCollectionHandler(ProductCollection.FAMILY)}
                         >
                             family
                         </Button>
-                           
-                        </Stack>
-                   
 
-                 
-                
-                       
+                        </Stack>
+
                         <Stack className="product-wrapper">
                               {products.length !== 0 ? (
                               products.map((product: Product) => {
                                   const imagePath = `${serverApi}/${product.productImages[0]}`;
                                 return (
-                                     <Stack 
-                                     key={product._id} 
+                                     <Stack
+                                     key={product._id}
                                      className="product-card"
                                         onClick={() => chooseDishHandler(product._id)}
                                      >
-                                        <Stack
-                                        className="product-img"
-                                        sx={{backgroundImage: `url(${imagePath})`}}
-                                        >
+                                        <Stack className="product-img">
+                                            <Box
+                                            className="img-layer"
+                                            sx={{backgroundImage: `url(${imagePath})`}}
+                                            />
                                         <div className="product-sale">{product.productSize}</div>
-                                         <Button className="view-btn" sx={{right:"36px"}}>
-                                            <Badge badgeContent={product.productViews} color="secondary" >
-                                                <RemoveRedEyeIcon className="eyeicon" 
-                                                sx={{color: "black"}} />
-                                            </Badge>
-                                        </Button>
+                                        <div className="product-views">
+                                            <RemoveRedEyeIcon className="view-icon" />
+                                            {product.productViews}
+                                        </div>
                                         </Stack>
 
                                         <Box className="product-desc">
@@ -258,7 +247,7 @@ export default function Products(props: ProductsProps) {
                                             </div>
                                            <div className="product-shopping">
                                             <div className="product-price">
-                                               <p>${product.productPrice}</p> 
+                                               <p>${product.productPrice}</p>
                                             </div>
                                              <Button className="shop-btn"
                                                     onClick={(e) => {
@@ -278,16 +267,16 @@ export default function Products(props: ProductsProps) {
                                              />
                                         </Button>
                                            </div>
-                                            
+
                                         </Box>
                                      </Stack>
                                 );
                             })
-                            ) : 
+                            ) :
                              (<Box className="no-data"> Products are not available now!</Box>
                              )}
                         </Stack>
-                    
+
 
                     <Stack className="pagination-section">
                         <Pagination
@@ -314,5 +303,5 @@ export default function Products(props: ProductsProps) {
                 </Stack>
             </Container>
         </div>
-    ); 
+    );
 }

@@ -1,42 +1,479 @@
 .order-page {
+    display: flex;
+    flex-direction: column;
     width: 100%;
     height: auto;
+    padding: 44px 0 30px 0;
     background: #f8f8ff;
-    display: flex;
     min-width: 1300px;
 }
 
+/* Page header */
+
+.order-page .order-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.order-page .order-page-title {
+    position: relative;
+    padding-bottom: 16px;
+    font-family: "Inter", "Roboto", "Helvetica", "Arial", sans-serif;
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 43px;
+    letter-spacing: 1.44px;
+    text-align: center;
+    color: rgb(17, 17, 17);
+}
+
+.order-page .order-page-title::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 56px;
+    height: 3px;
+    border-radius: 3px;
+    transform: translateX(-50%);
+    background: linear-gradient(90deg, #f0d98c 0%, #d4af37 100%);
+}
+
+/* Layout */
+
 .order-page .order-container {
-    margin-top: 50px;
-    margin-bottom: 50px;
     display: flex;
     flex-direction: row;
-    
+    gap: 30px;
+    margin-top: 38px;
+    margin-bottom: 50px;
 }
 
 .order-page .order-left {
-    width: 860px;
+    flex: 1;
+    min-width: 0;
     height: auto;
 }
 
 .order-page .order-right {
-    width: 360px;
-    height: auto;
-    margin-top: 86px;
-    margin-left: 30px;
+    flex-shrink: 0;
     display: flex;
     flex-direction: column;
+    width: 360px;
+    height: auto;
 }
 
-.order-page .order-right .order-info-box {
-    width: 360px;
+/* Tabs */
+
+.order-page .order-left .order-nav-frame {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    border-bottom: 1px solid rgba(17, 17, 17, 0.08);
+}
+
+.order-page .order-left .table-list .MuiTab-root {
+    min-height: 52px;
+    padding: 12px 22px;
+    font-family: "Inter", "Roboto", "Helvetica", "Arial", sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: rgba(17, 17, 17, 0.45);
+    transition: color 0.25s ease, background 0.25s ease;
+}
+
+.order-page .order-left .table-list .MuiTab-root:hover {
+    color: rgb(17, 17, 17);
+    background: rgba(212, 175, 55, 0.08);
+    border-radius: 10px 10px 0 0;
+}
+
+.order-page .order-left .table-list .MuiTab-root.Mui-selected {
+    color: rgb(17, 17, 17);
+}
+
+.order-page .order-left .table-list .MuiTabs-indicator {
+    height: 3px;
+    border-radius: 3px 3px 0 0;
+    background: linear-gradient(90deg, #f0d98c 0%, #d4af37 100%);
+}
+
+.order-page .order-main-content {
+    width: 100%;
     height: auto;
-    padding: 20px;
+}
+
+.order-page .order-main-content .MuiTabPanel-root {
+    padding: 24px 0 0 0;
+}
+
+/* Order card */
+
+.order-page .order-main-content .order-main-box {
+    position: relative;
+    width: 100%;
+    margin-bottom: 25px;
+    overflow: hidden;
+    background: #ffffff;
+    border: 1px solid rgba(212, 175, 55, 0.4);
+    border-radius: 18px;
+    box-shadow: 0 6px 18px rgba(27, 27, 27, 0.06);
+    transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.order-page .order-main-content .order-main-box:hover {
+    border-color: rgb(212, 175, 55);
+    box-shadow: 0 14px 30px rgba(27, 27, 27, 0.12);
+}
+
+/* Card head */
+
+.order-page .order-main-box .order-card-head {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    padding: 14px 20px;
+    border-bottom: 1px solid rgba(17, 17, 17, 0.06);
+    background: #fcfbf7;
+}
+
+.order-page .order-card-head .order-id-box {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    gap: 8px;
+}
+
+.order-page .order-card-head .order-id-label {
+    font-family: "Inter", "Roboto", "Helvetica", "Arial", sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: rgba(17, 17, 17, 0.45);
+}
+
+.order-page .order-card-head .order-id-value {
+    font-family: "Inter", "Roboto", "Helvetica", "Arial", sans-serif;
+    font-size: 14.5px;
+    font-weight: 700;
+    color: rgb(17, 17, 17);
+}
+
+.order-page .order-card-head .order-head-right {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 14px;
+}
+
+.order-page .order-card-head .order-date {
+    font-family: "Inter", "Roboto", "Helvetica", "Arial", sans-serif;
+    font-size: 12.5px;
+    font-weight: 500;
+    color: rgba(17, 17, 17, 0.45);
+}
+
+/* Status badges */
+
+.order-page .order-status-badge {
+    display: flex;
+    align-items: center;
+    height: 26px;
+    padding: 0 12px;
+    border-radius: 25px;
+    font-family: "Inter", "Roboto", "Helvetica", "Arial", sans-serif;
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+}
+
+.order-page .order-status-badge.paused {
+    color: hsl(46, 64%, 30%);
+    background: rgba(212, 175, 55, 0.18);
+    border: 1px solid rgba(212, 175, 55, 0.45);
+}
+
+.order-page .order-status-badge.process {
+    color: #1d5ec7;
+    background: rgba(47, 111, 237, 0.1);
+    border: 1px solid rgba(47, 111, 237, 0.3);
+}
+
+.order-page .order-status-badge.finished {
+    color: #1e7e46;
+    background: rgba(46, 160, 92, 0.12);
+    border: 1px solid rgba(46, 160, 92, 0.35);
+}
+
+/* Items list */
+
+.order-page .order-main-content .order-main-box .order-box-scroll {
+    position: relative;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
-    border: 1.5px solid rgb(212, 175, 55);
-    border-radius: 16px;
+    align-items: stretch;
+    width: 100%;
+    min-height: 70px;
+    max-height: 220px;
+    padding: 8px 20px;
+    overflow-y: auto;
+}
+
+.order-page .order-main-content .order-main-box .order-box-scroll::-webkit-scrollbar {
+    width: 5px;
+}
+
+.order-page .order-main-content .order-main-box .order-box-scroll::-webkit-scrollbar-thumb {
+    background-color: rgba(212, 175, 55, 0.6);
+    border-radius: 5px;
+}
+
+.order-page .order-box-scroll .order-name-price {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+    height: auto;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(17, 17, 17, 0.05);
+}
+
+.order-page .order-box-scroll .order-name-price:last-child {
+    border-bottom: none;
+}
+
+.order-page .order-box-scroll .order-name-price .order-sofa-img {
+    position: relative;
+    flex-shrink: 0;
+    width: 52px;
+    height: 50px;
+    object-fit: cover;
+    border: 1px solid rgba(212, 175, 55, 0.4);
+    border-radius: 12px;
+    background-size: cover;
+}
+
+.order-page .order-box-scroll .order-name-price .title-sofa {
+    position: relative;
+    flex: 1;
+    min-width: 0;
+    height: auto;
+    margin: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-family: "Inter", "Roboto", "Helvetica", "Arial", sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 15.5px;
+    line-height: 22px;
+    color: rgb(17, 17, 17);
+}
+
+.order-page .order-box-scroll .order-name-price .price-box {
+    position: relative;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    height: 100%;
+    margin-left: auto;
+}
+
+.order-page .order-box-scroll .order-name-price .price-box p {
+    margin: 0;
+    font-family: "Inter", "Roboto", "Helvetica", "Arial", sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 22px;
+    color: rgba(17, 17, 17, 0.6);
+}
+
+.order-page .order-box-scroll .order-name-price .price-box p:last-child {
+    font-size: 15px;
+    font-weight: 700;
+    color: rgb(17, 17, 17);
+}
+
+.order-page .order-box-scroll .order-name-price .price-box img {
+    width: 12px;
+    opacity: 0.4;
+}
+
+/* Totals + actions bar */
+
+.order-page .order-main-content .order-main-box .total-price-box {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+    width: 100%;
+    height: auto;
+    margin: 0;
+    padding: 12px 20px;
+    border-top: 1px solid rgba(17, 17, 17, 0.06);
+    background: #fcfbf7;
+    overflow: hidden;
+}
+
+.order-page .order-main-content .order-main-box .total-price-box .box-total {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    max-width: none;
+    height: auto;
+}
+
+.order-page .order-main-content .order-main-box .total-price-box .box-total p {
+    margin: 0 0 0 10px;
+    font-family: "Inter", "Roboto", "Helvetica", "Arial", sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 13.5px;
+    line-height: 30px;
+    color: rgba(17, 17, 17, 0.6);
+}
+
+.order-page .order-main-content .order-main-box .total-price-box .box-total p:nth-of-type(even) {
+    font-weight: 700;
+    color: rgb(17, 17, 17);
+}
+
+.order-page .order-main-content .order-main-box .total-price-box .box-total p:last-of-type {
+    font-size: 15.5px;
+    font-weight: 700;
+    color: hsl(46, 64%, 38%);
+}
+
+.order-page .order-main-content .order-main-box .total-price-box .box-total img {
+    width: 12px;
+    opacity: 0.4;
+}
+
+.order-page .order-main-content .order-main-box .total-price-box .data-compl {
+    margin: 0;
+    font-family: "Inter", "Roboto", "Helvetica", "Arial", sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12.5px;
+    line-height: 30px;
+    color: rgba(17, 17, 17, 0.45);
+}
+
+/* Action buttons */
+
+.order-page .order-main-content .order-main-box .verify-button {
+    max-height: 40px;
+    min-width: 110px;
+    padding: 7px 20px;
+    border: 1.5px solid rgba(17, 17, 17, 0.2);
+    border-radius: 10px;
+    font-family: "Inter", "Roboto", "Helvetica", "Arial", sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: none;
+    color: rgb(85, 85, 85);
+    background: #ffffff;
+    box-shadow: none;
+    transition: all 0.25s ease;
+}
+
+.order-page .order-main-content .order-main-box .verify-button:hover {
+    border-color: rgb(17, 17, 17);
+    color: rgb(17, 17, 17);
+    background: rgba(17, 17, 17, 0.04);
+    box-shadow: none;
+    transform: translateY(-2px);
+}
+
+.order-page .order-main-content .order-main-box .pay-button {
+    max-height: 40px;
+    min-width: 110px;
+    padding: 7px 20px;
+    border: none;
+    border-radius: 10px;
+    font-family: "Inter", "Roboto", "Helvetica", "Arial", sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: none;
+    color: #111111;
+    background: linear-gradient(160deg, #eccf7f 0%, #d4af37 80%);
+    box-shadow: none;
+    transition: all 0.25s ease;
+}
+
+.order-page .order-main-content .order-main-box .pay-button:hover {
+    background: hsl(46, 64%, 42%);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(212, 175, 55, 0.35);
+}
+
+/* Empty state */
+
+.order-page .no-orders-frame {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    width: 100%;
+    padding: 40px 20px 50px 20px;
+}
+
+.order-page .no-orders-frame .no-orders-img {
+    width: 220px;
+    height: 220px;
+    opacity: 0.9;
+}
+
+.order-page .no-orders-frame .no-orders-title {
+    font-family: "Inter", "Roboto", "Helvetica", "Arial", sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: rgb(17, 17, 17);
+}
+
+.order-page .no-orders-frame .no-orders-desc {
+    font-family: "Inter", "Roboto", "Helvetica", "Arial", sans-serif;
+    font-size: 13.5px;
+    font-weight: 500;
+    text-align: center;
+    color: rgba(17, 17, 17, 0.45);
+}
+
+/* Right column: user card */
+
+.order-page .order-right .order-info-box {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    padding: 26px 24px;
     margin-bottom: 25px;
+    border: 1px solid rgba(212, 175, 55, 0.4);
+    border-radius: 18px;
+    background: #ffffff;
+    box-shadow: 0 6px 18px rgba(27, 27, 27, 0.06);
 }
 
 .order-page .order-right .order-info-box .member-box {
@@ -47,9 +484,11 @@
 
 .order-page .order-right .order-info-box .liner {
     width: 100%;
-    border: 1px solid rgb(212, 175, 55);
-    margin-top: 40px;
-    margin-bottom: 8px;
+    height: 1px;
+    border: none;
+    margin-top: 24px;
+    margin-bottom: 16px;
+    background: rgba(212, 175, 55, 0.35);
 }
 
 .order-page .order-right .order-info-box .order-user-img {
@@ -60,324 +499,222 @@
 }
 
 .order-page .order-right .order-info-box .order-user-img .order-user-avatar {
-    width: 117px;
-    height: 112px;
-    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-    border-radius: 37px;
+    width: 110px;
+    height: 110px;
+    object-fit: cover;
+    border: 2px solid rgba(212, 175, 55, 0.5);
+    border-radius: 50%;
+    filter: none;
+    box-shadow: 0 6px 16px rgba(27, 27, 27, 0.12);
 }
 
 .order-page .order-right .order-info-box .order-user-icon-box {
     position: absolute;
-    padding: 5px;
-    width: 30px;
-    height: 30px;
-    top: 81%;
+    top: 74%;
     right: 0;
     display: flex;
-    background: rgba(0, 0, 0, 0.25);
-    border-radius: 37px;
+    width: 32px;
+    height: 32px;
+    padding: 6px;
+    border-radius: 50%;
+    background: linear-gradient(160deg, #eccf7f 0%, #d4af37 80%);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.18);
 }
 
 .order-page .order-right .order-info-box .order-user-icon-box .order-user-prof-img {
-   filter: brightness(0) invert(1);
+    filter: brightness(0);
 }
 
 .order-page .order-right .order-info-box .order-user-name {
-    margin-top: 10px;
-    font-family: 'Commissioner';
+    margin-top: 14px;
+    font-family: "Inter", "Roboto", "Helvetica", "Arial", sans-serif;
     font-style: normal;
-    font-weight: 500;
-    font-size: 28px;
-    line-height: 36px;
-    color: #08090d;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 30px;
+    color: rgb(17, 17, 17);
 }
 
 .order-page .order-right .order-info-box .order-user-prof {
-     margin-top: 10px;
-    font-family: 'Commissioner';
+    margin-top: 2px;
+    font-family: "Inter", "Roboto", "Helvetica", "Arial", sans-serif;
     font-style: normal;
-    font-weight: 500;
-    font-size: 20px;
-    line-height: 36px;
-    color: #a1a1a1;
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    line-height: 20px;
+    color: hsl(46, 64%, 42%);
 }
 
 .order-page .order-right .order-info-box .order-user-address {
-    width: 90%;
     display: flex;
     flex-direction: row;
     justify-content: center;
+    align-items: center;
+    width: 100%;
+    color: rgba(17, 17, 17, 0.4);
 }
 
 .order-page .order-right .order-info-box .spec-address-txt {
-     margin-left:5px;
-    font-family: 'DM Sans';
+    margin-left: 6px;
+    font-family: "Inter", "Roboto", "Helvetica", "Arial", sans-serif;
     font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 24px;
-    color: #616164;
+    font-weight: 500;
+    font-size: 14.5px;
+    line-height: 22px;
+    color: rgba(17, 17, 17, 0.6);
 }
 
+/* Right column: payment card */
 
-/*card*/
 .order-page .order-right .order-payment-box {
-    width: 360px;
-    height: auto;
-    padding: 20px;
     display: flex;
     flex-direction: column;
-    border: 1.5px solid rgb(212, 175, 55);
-    border-radius: 16px;
+    width: 100%;
+    height: auto;
+    padding: 24px;
     margin-bottom: 25px;
+    border: 1px solid rgba(212, 175, 55, 0.4);
+    border-radius: 18px;
+    background: #ffffff;
+    box-shadow: 0 6px 18px rgba(27, 27, 27, 0.06);
 }
 
-.order-page .order-right .order-payment-box .card-input, .card-half-input {
-    margin-top: 10px;
-    padding: 10px;
+.order-page .order-right .order-payment-box .card-input,
+.card-half-input {
     width: 100%;
-    height: 40px;
-    background: #f5f5f5;
-    border: 1.5px solid rgb(212, 175, 55);
+    height: 44px;
+    margin-top: 12px;
+    padding: 10px 14px;
+    background: #ffffff;
+    border: 1.5px solid rgba(17, 17, 17, 0.12);
     border-radius: 10px;
-    font-family: 'Nunito';
+    font-family: "Inter", "Roboto", "Helvetica", "Arial", sans-serif;
     font-style: normal;
-    font-size: 16px;
-    font-weight: 400;
+    font-size: 14px;
+    font-weight: 500;
     letter-spacing: -0.02rem;
     line-height: 22px;
+    color: rgb(17, 17, 17);
+    outline: none;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
-.order-page .order-right .order-payment-box .card-input:hover, .card-half-input:hover {
-    border-color: #000000;
-  color: rgb(85, 85, 85);
+.order-page .order-right .order-payment-box .card-input::placeholder,
+.card-half-input::placeholder {
+    color: rgba(17, 17, 17, 0.35);
 }
 
-.order-page.order-right .order-payment-box .card-half-input {
-    width: 49%;
+.order-page .order-right .order-payment-box .card-input:hover,
+.card-half-input:hover,
+.order-page .order-right .order-payment-box .card-input:focus,
+.card-half-input:focus {
+    border-color: rgb(212, 175, 55);
+    box-shadow: 0 2px 10px rgba(212, 175, 55, 0.15);
 }
 
+.order-page .order-right .order-payment-box .card-half-input {
+    width: 48%;
+}
 
 .order-page .order-payment-box .cards-box {
-    margin-top: 35px;
-    width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-}
-
-.order-page .order-info-box .css-wca78v-MuiButtonBase-root-MuiButton-root {
-    min-width: 160px;
-}
-
-.order-page .order-left .order-nav-frame {
-    width: 100%;
-    height: 60px;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    border-bottom: 1px solid #dab440;
-}
-
-.order-page .order-left .order-nav-frame .table-list {
-    display: flex;
-    justify-content: space-between;
-}
-
-.order-page .css-1gsv261 {
-    width: 75%;
-}
-
-.order-page .css-heg063-MuiTabs-flexContainer {
-    justify-content: space-between;
-}
-
-.order-page .order-main-content {
-    width: 855px;
-    height: auto;
-}
-
-.order-page .css-19kzrtu {
-    padding-top: 24px;
-}
-
-.order-page .order-main-content .order-main-box {
-    position: relative;
-    width: 100%;
-    max-height: 285px;
-    margin-bottom: 25px;
-    background: #f8f8ff;
-    border: 2px solid rgb(212, 175, 55);
-    border-radius: 15px;
-}
-
-.order-page .order-main-content .order-main-box .order-box-scroll {
-    position: relative;
-    overflow: hidden;
-    width: 100%;
-    min-height: 105px;
-    max-height: 205px;
-    margin-top: 15px;
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    overflow-y: scroll;
-}
-
-.order-page .order-main-content .order-main-box .order-box-scroll::-webkit-scrollbar {
-    width: 7px;
-}
-
-.order-page .order-main-content .order-main-box .order-box-scroll::-webkit-scrollbar-thumb {
-    background-color: rgb(212, 175, 55);
-    border-radius: 5px;
-}
-
-.order-page .order-box-scroll .order-name-price {
-    position: relative;
-    height: 47px;
-    margin-top: 5px;
-    margin-left: 50px;
-    display: flex;
-    flex-direction: row;
     align-items: center;
-}
-
-.order-page .order-box-scroll .order-name-price .order-sofa-img{
-    position: relative;
-    width: 50px;
-    height: 47px;
-    border-radius: 29px;
-    background-size: cover;
-}
-
-.order-page .order-box-scroll .order-name-price .title-sofa {
-    position: relative;
-    width: 260px;
-    height: 36px;
-    margin-left: 20px;
-    font-family:"Inter", "Roboto", "Helvetica", "Arial", sans-serif;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 22px;
-    line-height: 36px;
-    color: #000000;
-}
-
-.order-page .order-box-scroll .order-name-price .price-box{
-    position: relative;
-    max-width: 170px;
-    height: 100%;
-    margin-left: 150px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.order-page .order-box-scroll .order-name-price .price-box p {
-    font-family:"Inter", "Roboto", "Helvetica", "Arial", sans-serif;
-    font-size: 18px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 27px;
-     color: #262626;
-}
-
-.order-page .order-main-content .order-main-box .total-price-box {
-    position: relative;
     width: 100%;
-    height: 41px;
-    margin: 7px 0 7px 0;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-    box-sizing: border-box;
-    border-radius: 5px;
-    overflow: hidden;
+    margin-top: 26px;
 }
 
-
-.order-page .order-main-content .order-main-box  .cancel-button {
-      background: white;
-    color: rgb(212, 175, 55);
-    max-height: 40px;
-    border: 1.5px solid rgb(212, 175, 55);
-  border-radius: 25px;
-  transition: 0.25s;
+.order-page .order-payment-box .cards-box img {
+    height: 26px;
+    opacity: 0.85;
+    transition: opacity 0.25s ease, transform 0.25s ease;
 }
 
-.order-page .order-main-content .order-main-box  .cancel-button:hover {
-    border-color: #000000;
-  color: rgb(85, 85, 85);
-}
-   
-
-.order-page .order-main-content .order-main-box  .pay-button {
-    background: white;
-    color: rgb(212, 175, 55);
-    max-height: 40px;
-    border: 1.5px solid rgb(212, 175, 55);
-  border-radius: 25px;
-  transition: 0.25s;
+.order-page .order-payment-box .cards-box img:hover {
+    opacity: 1;
+    transform: translateY(-2px);
 }
 
-.order-page .order-main-content .order-main-box  .pay-button:hover {
-    border-color: #000000;
-  color: rgb(85, 85, 85);
+/* Responsive */
+
+@media (max-width: 1300px) {
+    .order-page {
+        min-width: auto;
+    }
 }
 
-.order-page .order-main-content .total-price-box .verify-button{
-     background: white;
-    color: rgb(212, 175, 55);
-    max-height: 40px;
-    border: 1.5px solid rgb(212, 175, 55);
-  border-radius: 25px;
-  transition: 0.25s;
+@media (max-width: 1024px) {
+    .order-page .order-container {
+        flex-direction: column;
+    }
+
+    .order-page .order-right {
+        flex-direction: row;
+        gap: 24px;
+        width: 100%;
+    }
+
+    .order-page .order-right .order-info-box,
+    .order-page .order-right .order-payment-box {
+        flex: 1;
+    }
 }
 
-.order-page .order-main-content .total-price-box .verify-button:hover{
-      border-color: #000000;
-  color: rgb(85, 85, 85);
+@media (max-width: 700px) {
+    .order-page .order-right {
+        flex-direction: column;
+        gap: 0;
+    }
 }
 
-.order-page .order-main-content .order-main-box .total-price-box .box-total{
-    position: relative;
-    max-width: 535px;
-    height: 100%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
+@media (max-width: 600px) {
+    .order-page {
+        padding-top: 32px;
+    }
+
+    .order-page .order-page-title {
+        font-size: 28px;
+        line-height: 34px;
+    }
+
+    .order-page .order-left .order-nav-frame {
+        justify-content: flex-start;
+        overflow-x: auto;
+    }
+
+    .order-page .order-left .table-list .MuiTab-root {
+        min-width: auto;
+        padding: 12px 12px;
+        font-size: 11.5px;
+        letter-spacing: 0.6px;
+    }
+
+    .order-page .order-main-box .order-card-head,
+    .order-page .order-main-content .order-main-box .total-price-box {
+        padding: 12px 14px;
+    }
+
+    .order-page .order-main-content .order-main-box .order-box-scroll {
+        padding: 6px 14px;
+    }
+
+    .order-page .order-box-scroll .order-name-price {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .order-page .order-box-scroll .order-name-price .price-box {
+        width: 100%;
+        justify-content: flex-end;
+        margin-left: 0;
+    }
+
+    .order-page .order-main-content .order-main-box .verify-button,
+    .order-page .order-main-content .order-main-box .pay-button {
+        flex: 1;
+        min-width: 0;
+    }
 }
-
-.order-page .order-main-content .order-main-box .total-price-box .box-total p{
-     margin-left: 20px;
-    font-family:"Inter", "Roboto", "Helvetica", "Arial", sans-serif;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 36px;
-    color: #000000;
-}
-
-.order-page .order-main-content .order-main-box .total-price-box .box-total .data-compl {
-    font-family:"Inter", "Roboto", "Helvetica", "Arial", sans-serif;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 36px;
-    color: #000000;
-}
-
-
-
-
- 
-
-
-
-
-
-

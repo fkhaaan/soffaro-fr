@@ -87,8 +87,9 @@ export default function Basket(props: BasketProps) {
           elevation: 0,
           sx: {
             overflow: "visible",
-            filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
+            filter: "drop-shadow(0px 8px 24px rgba(0,0,0,0.18))",
             mt: 1.5,
+            borderRadius: "16px",
             "& .MuiAvatar-root": {
               width: 32,
               height: 32,
@@ -112,15 +113,20 @@ export default function Basket(props: BasketProps) {
         transformOrigin={{ horizontal: "right", vertical: "top" }}
         anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
       >
-        <Stack className={"basket-frame"} sx={{ cursor: "pointer" }}>
+        <Stack className={"basket-frame"}>
           <Box className={"all-check-box"}>
             {cartItems.length === 0
-              ? (<div>Cart is empty!</div>)
-              : (<Stack flexDirection={"row"}>
-                <div>Cart Products:</div>
+              ? (<span className={"basket-title"}>Shopping Cart</span>)
+              : (<Stack className={"basket-head-row"} flexDirection={"row"}>
+                <Stack className={"basket-title-box"} flexDirection={"row"}>
+                  <span className={"basket-title"}>Shopping Cart</span>
+                  <span className={"basket-count"}>
+                    {cartItems.length} {cartItems.length === 1 ? "item" : "items"}
+                  </span>
+                </Stack>
                 <DeleteForeverIcon
-                  sx={{ ml: "5px", cursor: "pointer" }}
-                  color="primary"
+                  className={"clear-all-icon"}
+                  sx={{ cursor: "pointer" }}
                   onClick={() => onDeleteAll()}
                 />
               </Stack>
@@ -128,45 +134,72 @@ export default function Basket(props: BasketProps) {
               )}
           </Box>
 
-          <Box className={"orders-main-wrapper"}>
-            <Box className={"orders-wrapper"}>
-              {cartItems.map((item: CartItem) => {
-                const imagePath = `${serverApi}/${item.image}`;
-                return (
-                  <Box className={"basket-info-box"} key={item._id}>
-                    <div className={"cancel-btn"}>
-                      <CancelIcon
-                        color={"primary"}
-                        onClick={() => onDelete(item)}
-                      />
-                    </div>
-                    <img src={imagePath} className={"product-img"} alt="" />
-                    <span className={"product-name"}>{item.name}</span>
-                    <p className={"product-price"}>${item.price} x {item.quantity}</p>
-                    <Box sx={{ minWidth: 120 }}>
-                      <div className="col-2">
-                        <button
-                          onClick={() => onRemove(item)}
-                          className="remove">-</button>{" "}
-                        <button
-                          onClick={() => onAdd(item)}
-                          className="add">+</button>
+          {cartItems.length === 0 ? (
+            <Box className={"basket-empty"}>
+              <div className={"empty-icon-circle"}>
+                <ShoppingCartIcon className={"empty-icon"} />
+              </div>
+              <span className={"empty-title"}>Cart is empty!</span>
+              <span className={"empty-desc"}>
+                Sofas you add will appear here.
+              </span>
+            </Box>
+          ) : (
+            <Box className={"orders-main-wrapper"}>
+              <Box className={"orders-wrapper"}>
+                {cartItems.map((item: CartItem) => {
+                  const imagePath = `${serverApi}/${item.image}`;
+                  return (
+                    <Box className={"basket-info-box"} key={item._id}>
+                      <img src={imagePath} className={"product-img"} alt={item.name} />
+                      <Stack className={"item-details"}>
+                        <span className={"product-name"}>{item.name}</span>
+                        <p className={"product-price"}>${item.price} x {item.quantity}</p>
+                        <div className="col-2">
+                          <button
+                            onClick={() => onRemove(item)}
+                            className="remove">-</button>
+                          <span className={"qty-value"}>{item.quantity}</span>
+                          <button
+                            onClick={() => onAdd(item)}
+                            className="add">+</button>
+                        </div>
+                      </Stack>
+                      <div className={"cancel-btn"}>
+                        <CancelIcon
+                          onClick={() => onDelete(item)}
+                        />
                       </div>
                     </Box>
-                  </Box>
-                );
-              })}
+                  );
+                })}
 
+              </Box>
             </Box>
-          </Box>
+          )}
+
           {cartItems.length !== 0 ? (
             <Box className={"basket-order"}>
-              <span className={"price"}>Total: ${totalPrice} ({itemsPrice} + {shippingCost})</span>
-              <Button 
+              <Stack className={"summary-rows"}>
+                <div className={"summary-row"}>
+                  <span>Subtotal</span>
+                  <span>${itemsPrice}</span>
+                </div>
+                <div className={"summary-row"}>
+                  <span>Shipping</span>
+                  <span>{shippingCost === 0 ? "Free" : `$${shippingCost}`}</span>
+                </div>
+                <div className={"summary-row total"}>
+                  <span>Total</span>
+                  <span className={"price"}>${totalPrice}</span>
+                </div>
+              </Stack>
+              <Button
                 onClick={proceedOrderHandler}
                 startIcon={<ShoppingCartIcon />}
                 variant={"contained"}
-                color="secondary"
+                className={"order-btn"}
+                disableElevation
                 >
                 Order
               </Button>

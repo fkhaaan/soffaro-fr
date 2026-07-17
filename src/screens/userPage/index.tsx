@@ -16,6 +16,9 @@ export default function UserPage() {
   return (
     <div className={"user-page"}>
       <Container>
+        <Box className={"user-page-header"}>
+          <Box className={"user-page-title"}>MY PAGE</Box>
+        </Box>
         <Stack className={"my-page-frame"}>
           <Stack className={"my-page-left"}>
             <Box display={"flex"} flexDirection={"column"}>

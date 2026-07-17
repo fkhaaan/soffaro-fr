@@ -90,26 +90,27 @@ export default function ChosenProduct(props: ChosenProductProps) {
         </Stack>
         <Stack className={"chosen-product-info"}>
           <Box className={"info-box"}>
-            <strong className={"product-name"}>{chosenProduct?.productName}</strong>
             <span className={"collection-name"}>{store?.memberNick}</span>
+            <strong className={"product-name"}>{chosenProduct?.productName}</strong>
             <Box className={"rating-box"}>
               <Rating name="half-rating" defaultValue={4.5} precision={0.5} />
               <div className={"evaluation-box"}>
                 <div className={"product-view"}>
-                  <RemoveRedEyeIcon sx={{ mr: "10px" }} />
+                  <RemoveRedEyeIcon className={"view-icon"} />
                   <span>{chosenProduct?.productViews}</span>
                 </div>
               </div>
             </Box>
             <p className={"product-desc"}>{chosenProduct?.productDesc ? chosenProduct?.productDesc : "No Description"}</p>
-            <Divider height="3" width="100%" bg="rgb(212, 175, 55)" />
+            <Divider height="1" width="100%" bg="rgba(212, 175, 55, 0.45)" />
             <div className={"product-price"}>
-              <span>PRICE:</span>
-              <span>${chosenProduct?.productPrice}</span>
+              <span className={"price-label"}>PRICE:</span>
+              <span className={"price-value"}>${chosenProduct?.productPrice}</span>
             </div>
             <div className={"button-box"}>
-              <Button startIcon={<ShoppingCartIcon />} 
-              variant="contained" color="secondary"
+              <Button startIcon={<ShoppingCartIcon />}
+              variant="contained" disableElevation
+              className={"add-basket-btn"}
                 onClick={(e) => {
                   onAdd({
                     _id: chosenProduct._id,
