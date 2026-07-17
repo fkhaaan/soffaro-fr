@@ -7,47 +7,116 @@
 
 .homepage .static-frame {
   width: 100%;
-  height: 236px;
-  margin-top: 50px;
-  background: #f8f8ff;
+  padding: 58px 0;
+  background:
+    radial-gradient(
+      ellipse 80% 120% at 50% -20%,
+      rgba(212, 175, 55, 0.12) 0%,
+      rgba(212, 175, 55, 0) 60%
+    ),
+    linear-gradient(135deg, #131313 0%, #1c1a15 60%, #211d15 100%);
   min-width: 1300px;
 }
 
 .homepage .static-frame .info {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  align-items: stretch;
 }
 
 .homepage .static-frame .info .static-box {
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 200px;
-  height: 116px;
+  gap: 10px;
+  padding: 10px 16px;
+  transition: transform 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.homepage .static-frame .info .static-box + .static-box::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 1px;
+  height: 64px;
+  transform: translateY(-50%);
+  background: linear-gradient(
+    to bottom,
+    rgba(212, 175, 55, 0) 0%,
+    rgba(212, 175, 55, 0.45) 50%,
+    rgba(212, 175, 55, 0) 100%
+  );
+}
+
+.homepage .static-frame .info .static-box:hover {
+  transform: translateY(-4px);
 }
 
 .homepage .static-frame .info .static-box .static-num {
   font-family: "Inter", "Roboto", "Helvetica", "Arial", sans-serif;
-  font-size: 54px;
-  font-weight: 400;
+  font-size: clamp(40px, 4vw, 56px);
+  font-weight: 700;
   font-style: normal;
-  line-height: normal;
+  line-height: 1;
+  letter-spacing: -1px;
   text-align: center;
-  color: black;
+  background: linear-gradient(160deg, #f0d98c 0%, #d4af37 55%, #b9962a 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .homepage .static-frame .info .static-box .static-txt {
   font-family: "Inter", "Roboto", "Helvetica", "Arial", sans-serif;
-  font-size: 20px;
+  font-size: 13px;
   font-weight: 600;
   font-style: normal;
-  line-height: 30px;
+  line-height: 20px;
+  letter-spacing: 2.2px;
+  text-transform: uppercase;
   text-align: center;
-  color: black;
+  color: rgba(255, 255, 255, 0.66);
+  transition: color 0.35s ease;
+}
+
+.homepage .static-frame .info .static-box:hover .static-txt {
+  color: rgba(255, 255, 255, 0.92);
+}
+
+/* Statistics — responsive */
+@media (max-width: 1300px) {
+  .homepage .static-frame {
+    min-width: auto;
+  }
+}
+
+@media (max-width: 900px) {
+  .homepage .static-frame {
+    padding: 44px 0;
+  }
+
+  .homepage .static-frame .info {
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 36px;
+  }
+
+  .homepage .static-frame .info .static-box:nth-child(3)::before {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .homepage .static-frame .info .static-box .static-num {
+    font-size: 36px;
+  }
+
+  .homepage .static-frame .info .static-box .static-txt {
+    font-size: 11px;
+    letter-spacing: 1.6px;
+  }
 }
 
 /** POPULARS**/
@@ -55,9 +124,9 @@
 .homepage .popular-sofas-frame {
   display: flex;
   width: 100%;
-  height: 580px;
   background: #f8f8ff;
   min-width: 1300px;
+  padding: 50px 0 60px 0;
 }
 
 .homepage .popular-sofas-frame .popular-section {
@@ -67,50 +136,180 @@
 }
 
 .homepage .popular-sofas-frame .popular-section .category-title {
-  margin-top: 30px;
+  position: relative;
+  padding-bottom: 16px;
   font-family: "Inter", "Roboto", "Helvetica", "Arial", sans-serif;
   font-size: 36px;
-  font-weight: 600;
+  font-weight: 700;
   font-style: normal;
-  line-height: normal;
+  line-height: 43px;
   letter-spacing: 1.44px;
   text-align: center;
-  color: lab(1.43% 0.26 0.09);
+  color: rgb(17, 17, 17);
+}
+
+.homepage .popular-sofas-frame .popular-section .category-title::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 56px;
+  height: 3px;
+  border-radius: 3px;
+  transform: translateX(-50%);
+  background: linear-gradient(90deg, #f0d98c 0%, #d4af37 100%);
 }
 
 .homepage .popular-sofas-frame .popular-section .cards-frame {
-  flex-direction: row;
-  justify-content: space-around;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 26px;
   width: 100%;
   margin: 45px 2px 2px 2px;
 }
 
 .homepage .popular-sofas-frame .popular-section .cards-frame .card {
+  position: relative;
   overflow: hidden;
-  min-width: 300px;
+  width: 100%;
+  aspect-ratio: 3 / 3.6;
   min-height: 300px;
-  border: 2px solid #070706;
-  border-radius: 16px;
-  color: #d4af37;
-  background: rgba(223, 210, 210, 0.8);
-  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  padding: 0;
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  border-radius: 18px;
+  background: #111111;
+  box-shadow: 0 6px 18px rgba(27, 27, 27, 0.08);
+  transition:
+    transform 0.35s cubic-bezier(0.25, 0.8, 0.25, 1),
+    box-shadow 0.35s cubic-bezier(0.25, 0.8, 0.25, 1),
+    border-color 0.35s ease;
   cursor: pointer;
 }
 
 .homepage .popular-sofas-frame .popular-section .cards-frame .card:hover {
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
-  transform: translateY(-8px) scale(1.04);
+  transform: translateY(-8px);
+  border-color: rgb(212, 175, 55);
+  box-shadow: 0 20px 40px rgba(27, 27, 27, 0.22);
+}
+
+.homepage .popular-sofas-frame .popular-section .cards-frame .card .card-media img {
+  transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.homepage .popular-sofas-frame .popular-section .cards-frame .card:hover .card-media img {
+  transform: scale(1.08);
 }
 
 .homepage .popular-sofas-frame .popular-section .cards-frame .card .card-cover {
   background: linear-gradient(
     to top,
-    rgba(0, 0, 0, 0.9) 0%,
-    rgba(0, 0, 0, 0.7) 20%,
-    rgba(0, 0, 0, 0.4) 40%,
-    rgba(0, 0, 0, 0.1) 65%,
-    rgba(0, 0, 0, 0) 85%
+    rgba(0, 0, 0, 0.88) 0%,
+    rgba(0, 0, 0, 0.55) 22%,
+    rgba(0, 0, 0, 0.15) 48%,
+    rgba(0, 0, 0, 0) 70%
   );
+  transition: background 0.35s ease;
+}
+
+.homepage .popular-sofas-frame .cards-frame .card .card-content {
+  padding: 14px;
+}
+
+.homepage .popular-sofas-frame .cards-frame .card .card-top {
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.homepage .popular-sofas-frame .cards-frame .card .rank-badge {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  font-family: "Inter", "Roboto", "Helvetica", "Arial", sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #111111;
+  background: linear-gradient(160deg, #f0d98c 0%, #d4af37 70%);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.homepage .popular-sofas-frame .cards-frame .card .views-badge {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  height: 30px;
+  padding: 0 12px;
+  border-radius: 25px;
+  font-family: "Inter", "Roboto", "Helvetica", "Arial", sans-serif;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #ffffff;
+  background: rgba(17, 17, 17, 0.55);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.homepage .popular-sofas-frame .cards-frame .card .views-badge .views-icon {
+  font-size: 16px;
+}
+
+.homepage .popular-sofas-frame .cards-frame .card .card-bottom {
+  gap: 8px;
+  width: 100%;
+}
+
+.homepage .popular-sofas-frame .cards-frame .card .gold-rule {
+  width: 34px;
+  height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, #f0d98c 0%, #d4af37 100%);
+  transition: width 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.homepage .popular-sofas-frame .cards-frame .card:hover .gold-rule {
+  width: 64px;
+}
+
+.homepage .popular-sofas-frame .cards-frame .card .card-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-family: "Inter", "Roboto", "Helvetica", "Arial", sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  color: #ffffff;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+}
+
+/* Populars — responsive */
+@media (max-width: 1300px) {
+  .homepage .popular-sofas-frame {
+    min-width: auto;
+  }
+}
+
+@media (max-width: 1024px) {
+  .homepage .popular-sofas-frame .popular-section .cards-frame {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px;
+  }
+}
+
+@media (max-width: 600px) {
+  .homepage .popular-sofas-frame .popular-section .cards-frame {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .homepage .popular-sofas-frame .popular-section .category-title {
+    font-size: 28px;
+    line-height: 34px;
+  }
 }
 
 .homepage .popular-sofas-frame .no-data {

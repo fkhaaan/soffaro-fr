@@ -1,4 +1,3 @@
-
 import { Box, Container, Stack } from "@mui/material";
 import { CssVarsProvider } from "@mui/joy/styles";
 import Card from '@mui/joy/Card';
@@ -29,47 +28,33 @@ export default function PopularSofas() {
 
                 <Stack className="cards-frame">
                     {popularSofas.length !== 0 ? (
-                        popularSofas.map((product: Product) => {
+                        popularSofas.map((product: Product, index: number) => {
                             const imagePath = `${serverApi}/${product.productImages[0]}`;
                     return (
                      <CssVarsProvider key={product._id}>
                         <Card className="card">
-                            <CardCover>
-                                <img src={imagePath} alt="" />
+                            <CardCover className="card-media">
+                                <img src={imagePath} alt={product.productName} />
                             </CardCover>
                             <CardCover className="card-cover"/>
-                            <CardContent className="card-content" sx={{justifyContent: "flex-end"}}>
-                                <Stack
-                                 flexDirection={"row"}
-                                 justifyContent={"space-between"}
-                                >
+                            <CardContent className="card-content" sx={{justifyContent: "space-between"}}>
+                                <Stack className="card-top">
+                                    <Box className="rank-badge">{index + 1}</Box>
+                                    <Box className="views-badge">
+                                        <VisibilityIcon className="views-icon" />
+                                        {product.productViews}
+                                    </Box>
+                                </Stack>
+                                <Stack className="card-bottom">
+                                    <Box className="gold-rule" />
                                     <Typography
                                     level="h2"
-                                    fontSize="lg"
-                                    textColor="#ffffff"
+                                    className="card-name"
                                      >
                                         {product.productName}
                                     </Typography>
-                                    <Typography
-                                    sx={{
-                                        fontWeight: "md",
-                                        color: "neutral.300",
-                                        alignItems: "center",
-                                        display: "flex"
-                                    }}
-                                    >
-                                        {product.productViews}
-                                     <VisibilityIcon 
-                                     sx={{ fontSize: 23, marginLeft: "5px", color: "white"}}
-                                     />
-                                    </Typography>
-
-                                    
                                 </Stack>
-                               
-                            
                             </CardContent>
-                          
                         </Card>
                      </CssVarsProvider>
                     );
@@ -77,7 +62,6 @@ export default function PopularSofas() {
                 ) : (
                     <Box className="no-data">Popular products are not available!</Box>
                 )}
-                  
 
                 </Stack>
             </Stack>
